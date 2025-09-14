@@ -448,8 +448,6 @@ export default function App() {
                   wettbewerb@roborave.de
                 </a>
               </div>
-                </a>
-              </div>
             </div>
           </div>
         </div>
