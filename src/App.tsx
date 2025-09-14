@@ -299,62 +299,62 @@ export default function App() {
   // Bestätigungsseite nach erfolgreichem Absenden
   if (isSubmitted) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-red-50 to-red-100">
-        <div className="container mx-auto px-4 py-8">
+      <div className="min-h-screen bg-gradient-to-br from-red-50 to-red-100 px-4 py-4 sm:py-8">
+        <div className="container mx-auto">
           <div className="max-w-2xl mx-auto">
             <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-              <div className="bg-gradient-to-r from-green-600 to-emerald-600 text-white p-8 text-center">
-                <CheckCircle className="w-16 h-16 mx-auto mb-4" />
-                <h1 className="text-3xl font-bold mb-2">{t.registrationSuccessful}</h1>
-                <p className="text-green-100">{t.registrationSubmitted}</p>
+              <div className="bg-gradient-to-r from-green-600 to-emerald-600 text-white p-4 sm:p-8 text-center">
+                <CheckCircle className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-4" />
+                <h1 className="text-xl sm:text-3xl font-bold mb-2">{t.registrationSuccessful}</h1>
+                <p className="text-green-100 text-sm sm:text-base">{t.registrationSubmitted}</p>
               </div>
 
-              <div className="p-8 text-center">
+              <div className="p-4 sm:p-8 text-center">
                 <div className="mb-8">
-                  <h2 className="text-2xl font-bold text-gray-800 mb-4">{t.thankYou}</h2>
-                  <p className="text-gray-600 mb-6">
+                  <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4">{t.thankYou}</h2>
+                  <p className="text-gray-600 mb-6 text-sm sm:text-base">
                     {t.registrationSubmitted}
                   </p>
                 </div>
 
-                <div className="bg-blue-50 rounded-lg p-6 mb-8">
-                  <h3 className="text-lg font-semibold text-gray-800 mb-3">{t.nextSteps}</h3>
-                  <div className="text-left space-y-2 text-gray-700">
+                <div className="bg-blue-50 rounded-lg p-4 sm:p-6 mb-8">
+                  <h3 className="text-base sm:text-lg font-semibold text-gray-800 mb-3">{t.nextSteps}</h3>
+                  <div className="text-left space-y-2 text-gray-700 text-sm sm:text-base">
                     {t.nextStepsText.split('\n').map((line, index) => (
                       <p key={index}>{line}</p>
                     ))}
                   </div>
                 </div>
 
-                <div className="bg-gray-50 rounded-lg p-6 mb-8">
+                <div className="bg-gray-50 rounded-lg p-4 sm:p-6 mb-8">
                   <div className="flex items-center mb-4">
-                    <CreditCard className="w-6 h-6 text-green-600 mr-3" />
-                    <h3 className="text-lg font-semibold text-gray-800">{t.paymentInfo}</h3>
+                    <CreditCard className="w-5 h-5 sm:w-6 sm:h-6 text-green-600 mr-3" />
+                    <h3 className="text-base sm:text-lg font-semibold text-gray-800">{t.paymentInfo}</h3>
                   </div>
                   
                   <div className="space-y-3 text-sm">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
                         <span className="font-medium text-gray-700">IBAN:</span>
-                        <div className="font-mono text-gray-900 bg-white p-2 rounded border">
+                        <div className="font-mono text-xs sm:text-sm text-gray-900 bg-white p-2 rounded border break-all">
                           DE38 6835 0048 0020-000.022
                         </div>
                       </div>
                       <div>
                         <span className="font-medium text-gray-700">BIC:</span>
-                        <div className="font-mono text-gray-900 bg-white p-2 rounded border">
+                        <div className="font-mono text-xs sm:text-sm text-gray-900 bg-white p-2 rounded border">
                           SKLODE66
                         </div>
                       </div>
                       <div>
                         <span className="font-medium text-gray-700">SWIFT-Code:</span>
-                        <div className="font-mono text-gray-900 bg-white p-2 rounded border">
+                        <div className="font-mono text-xs sm:text-sm text-gray-900 bg-white p-2 rounded border">
                           SOLADEST
                         </div>
                       </div>
                       <div>
                         <span className="font-medium text-gray-700">Bank:</span>
-                        <div className="text-gray-900 bg-white p-2 rounded border">
+                        <div className="text-xs sm:text-sm text-gray-900 bg-white p-2 rounded border">
                           Sparkasse Lörrach-Rheinfelden
                         </div>
                       </div>
@@ -362,11 +362,11 @@ export default function App() {
                   </div>
                 </div>
 
-                <div className="bg-yellow-50 rounded-lg p-6 mb-8">
-                  <h4 className="font-semibold text-gray-800 mb-3">{t.paymentPurpose}</h4>
+                <div className="bg-yellow-50 rounded-lg p-4 sm:p-6 mb-8">
+                  <h4 className="text-sm sm:text-base font-semibold text-gray-800 mb-3">{t.paymentPurpose}</h4>
                   <div className="space-y-2">
                     {formData.teams.map((team, index) => (
-                      <div key={index} className="font-mono text-sm bg-white p-3 rounded border">
+                      <div key={index} className="font-mono text-xs sm:text-sm bg-white p-3 rounded border break-all">
                         RoboRave 2025, {team.teamName || `${t.team} ${index + 1}`}
                       </div>
                     ))}
@@ -377,17 +377,17 @@ export default function App() {
                   </div>
                 </div>
 
-                <div className="bg-gray-50 rounded-lg p-6 mb-8">
+                <div className="bg-gray-50 rounded-lg p-4 sm:p-6 mb-8">
                   <div className="flex items-center justify-center mb-3">
                     <Mail className="w-5 h-5 text-blue-600 mr-2" />
-                    <h3 className="text-lg font-semibold text-gray-800">{t.questions}</h3>
+                    <h3 className="text-base sm:text-lg font-semibold text-gray-800">{t.questions}</h3>
                   </div>
-                  <p className="text-gray-600 mb-3">
+                  <p className="text-gray-600 mb-3 text-sm sm:text-base">
                     {t.questionsText}
                   </p>
                   <a 
                     href="mailto:wettbewerb@roborave.de" 
-                    className="inline-flex items-center px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+                    className="inline-flex items-center px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors text-sm sm:text-base"
                   >
                     <Mail className="w-4 h-4 mr-2" />
                     wettbewerb@roborave.de
@@ -396,7 +396,7 @@ export default function App() {
 
                 <button
                   onClick={resetForm}
-                  className="px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors font-semibold"
+                  className="w-full sm:w-auto px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors font-semibold text-sm sm:text-base"
                 >
                   {t.newRegistration}
                 </button>
@@ -409,29 +409,29 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-50 to-red-100">
-      <div className="container mx-auto px-4 py-8">
+    <div className="min-h-screen bg-gradient-to-br from-red-50 to-red-100 px-4 py-4 sm:py-8">
+      <div className="container mx-auto">
         <div className="max-w-4xl mx-auto">
           <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
             {/* Header */}
-            <div className="bg-gradient-to-r from-red-600 to-red-700 text-white p-8">
-              <div className="flex items-center justify-center mb-4">
+            <div className="bg-gradient-to-r from-red-600 to-red-700 text-white p-4 sm:p-8">
+              <div className="flex flex-col sm:flex-row items-center justify-center mb-4">
                 <img 
                   src="/image.png" 
                   alt="RoboRave Germany Logo" 
-                  className="h-12 w-auto mr-4 object-contain"
+                  className="h-10 sm:h-12 w-auto mb-2 sm:mb-0 sm:mr-4 object-contain"
                 />
-                <h1 className="text-3xl font-bold">{t.title}</h1>
+                <h1 className="text-xl sm:text-3xl font-bold text-center">{t.title}</h1>
               </div>
-              <p className="text-red-100 text-center">{t.subtitle}</p>
+              <p className="text-red-100 text-center text-sm sm:text-base">{t.subtitle}</p>
             </div>
 
             {/* Progress Bar */}
-            <div className="bg-gray-50 px-8 py-4">
-              <div className="flex items-center justify-between">
+            <div className="bg-gray-50 px-4 sm:px-8 py-4">
+              <div className="flex items-center justify-between overflow-x-auto">
                 {[1, 2, 3, 4].map((step) => (
-                  <div key={step} className="flex items-center">
-                    <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
+                  <div key={step} className="flex items-center flex-shrink-0">
+                    <div className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-xs sm:text-sm font-medium ${
                       currentStep >= step 
                         ? 'bg-red-600 text-white' 
                         : 'bg-gray-300 text-gray-600'
@@ -439,133 +439,134 @@ export default function App() {
                       {step}
                     </div>
                     {step < 4 && (
-                      <div className={`w-16 h-1 mx-2 ${
+                      <div className={`w-8 sm:w-16 h-1 mx-1 sm:mx-2 ${
                         currentStep > step ? 'bg-red-600' : 'bg-gray-300'
                       }`} />
                     )}
                   </div>
                 ))}
               </div>
-              <div className="flex justify-between mt-2 text-sm text-gray-600">
-                <span>{t.teamManager}</span>
-                <span>{t.teams}</span>
-                <span>{t.participationFee}</span>
-                <span>{t.summary}</span>
+              <div className="flex justify-between mt-2 text-xs sm:text-sm text-gray-600 overflow-x-auto">
+                <span className="flex-shrink-0">{t.teamManager}</span>
+                <span className="flex-shrink-0">{t.teams}</span>
+                <span className="flex-shrink-0 hidden sm:inline">{t.participationFee}</span>
+                <span className="flex-shrink-0 sm:hidden">Fee</span>
+                <span className="flex-shrink-0">{t.summary}</span>
               </div>
             </div>
 
-            <div className="p-8">
+            <div className="p-4 sm:p-8">
               {/* Step 1: Team-Manager Information */}
               {currentStep === 1 && (
                 <div className="space-y-6">
                   <div className="flex items-center mb-6">
-                    <Building className="w-6 h-6 text-red-600 mr-3" />
-                    <h2 className="text-2xl font-bold text-gray-800">{t.teamManagerTitle}</h2>
+                    <Building className="w-5 h-5 sm:w-6 sm:h-6 text-red-600 mr-3" />
+                    <h2 className="text-xl sm:text-2xl font-bold text-gray-800">{t.teamManagerTitle}</h2>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
                         {t.schoolInstitution}
                       </label>
                       <input
                         type="text"
                         value={formData.teamManagerName}
                         onChange={(e) => setFormData(prev => ({ ...prev, teamManagerName: e.target.value }))}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                        className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
                         placeholder={t.schoolInstitutionPlaceholder}
                         required
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
                         {t.country}
                       </label>
                       <input
                         type="text"
                         value={formData.country}
                         onChange={(e) => setFormData(prev => ({ ...prev, country: e.target.value }))}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                        className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
                         placeholder={t.countryPlaceholder}
                         required
                       />
                     </div>
 
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <div className="sm:col-span-2">
+                      <label className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
                         {t.address}
                       </label>
                       <input
                         type="text"
                         value={formData.adresse}
                         onChange={(e) => setFormData(prev => ({ ...prev, adresse: e.target.value }))}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                        className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
                         placeholder={t.addressPlaceholder}
                       />
                     </div>
 
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <label className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
                           {t.postalCode}
                         </label>
                         <input
                           type="text"
                           value={formData.plz}
                           onChange={(e) => setFormData(prev => ({ ...prev, plz: e.target.value }))}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                          className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
                           placeholder={t.postalCodePlaceholder}
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <label className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
                           {t.city}
                         </label>
                         <input
                           type="text"
                           value={formData.stadt}
                           onChange={(e) => setFormData(prev => ({ ...prev, stadt: e.target.value }))}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                          className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
                           placeholder={t.cityPlaceholder}
                         />
                       </div>
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
                         {t.contactPerson}
                       </label>
                       <input
                         type="text"
                         value={formData.ansprechperson}
                         onChange={(e) => setFormData(prev => ({ ...prev, ansprechperson: e.target.value }))}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                        className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
                         placeholder={t.contactPersonPlaceholder}
                         required
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
                         {t.email}
                       </label>
                       <input
                         type="email"
                         value={formData.email}
                         onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                        className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
                         placeholder={t.emailPlaceholder}
                         required
                       />
                     </div>
                   </div>
 
-                  <div className="flex justify-end pt-6">
+                  <div className="flex flex-col sm:flex-row justify-end pt-6">
                     <button
                       onClick={nextStep}
                       disabled={!canProceedToStep2()}
-                      className="px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
+                      className="w-full sm:w-auto px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors text-sm sm:text-base"
                     >
                       {t.continueToTeams}
                     </button>
@@ -576,55 +577,55 @@ export default function App() {
               {/* Step 2: Teams */}
               {currentStep === 2 && (
                 <div className="space-y-6">
-                  <div className="flex items-center justify-between mb-6">
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-4">
                     <div className="flex items-center">
-                      <Users className="w-6 h-6 text-red-600 mr-3" />
-                      <h2 className="text-2xl font-bold text-gray-800">{t.teamsTitle}</h2>
+                      <Users className="w-5 h-5 sm:w-6 sm:h-6 text-red-600 mr-3" />
+                      <h2 className="text-xl sm:text-2xl font-bold text-gray-800">{t.teamsTitle}</h2>
                     </div>
                     <button
                       onClick={addTeam}
-                      className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+                      className="w-full sm:w-auto px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors text-sm sm:text-base"
                     >
                       {t.addTeam}
                     </button>
                   </div>
 
                   {formData.teams.map((team, teamIndex) => (
-                    <div key={teamIndex} className="border border-gray-200 rounded-lg p-6 space-y-4">
-                      <div className="flex items-center justify-between">
-                        <h3 className="text-lg font-semibold text-gray-800">{t.team} {teamIndex + 1}</h3>
+                    <div key={teamIndex} className="border border-gray-200 rounded-lg p-4 sm:p-6 space-y-4">
+                      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+                        <h3 className="text-base sm:text-lg font-semibold text-gray-800">{t.team} {teamIndex + 1}</h3>
                         <button
                           onClick={() => removeTeam(teamIndex)}
-                          className="text-red-600 hover:text-red-800 transition-colors"
+                          className="text-red-600 hover:text-red-800 transition-colors text-sm sm:text-base"
                         >
                           {t.removeTeam}
                         </button>
                       </div>
 
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                          <label className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
                             {t.teamName}
                           </label>
                           <input
                             type="text"
                             value={team.teamName}
                             onChange={(e) => updateTeam(teamIndex, 'teamName', e.target.value)}
-                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                            className="w-full px-3 sm:px-4 py-2 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
                             placeholder={t.teamNamePlaceholder}
                             required
                           />
                         </div>
 
                         <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                          <label className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
                             {t.additionalInfo}
                           </label>
                           <input
                             type="text"
                             value={team.zusaetzlicheInfo}
                             onChange={(e) => updateTeam(teamIndex, 'zusaetzlicheInfo', e.target.value)}
-                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                            className="w-full px-3 sm:px-4 py-2 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
                             placeholder={t.additionalInfoPlaceholder}
                           />
                         </div>
@@ -632,10 +633,10 @@ export default function App() {
 
                       {/* Wettbewerbe */}
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <label className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
                           {t.competitions}
                         </label>
-                        <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
                           {WETTBEWERBE.map((wettbewerb) => (
                             <label key={wettbewerb} className="flex items-center space-x-2 cursor-pointer">
                               <input
@@ -652,25 +653,25 @@ export default function App() {
 
                       {/* Teilnehmer */}
                       <div>
-                        <div className="flex items-center justify-between mb-3">
-                          <label className="block text-sm font-medium text-gray-700">
+                        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-3 gap-2">
+                          <label className="block text-sm sm:text-base font-medium text-gray-700">
                             {t.participants}
                           </label>
                           <button
                             onClick={() => addTeilnehmer(teamIndex)}
-                            className="px-3 py-1 bg-red-600 text-white text-sm rounded hover:bg-red-700 transition-colors"
+                            className="w-full sm:w-auto px-3 py-1 bg-red-600 text-white text-sm rounded hover:bg-red-700 transition-colors"
                           >
                             {t.addParticipant}
                           </button>
                         </div>
 
                         {team.teilnehmer.map((teilnehmer, teilnehmerIndex) => (
-                          <div key={teilnehmerIndex} className="grid grid-cols-1 md:grid-cols-5 gap-3 mb-3 p-3 bg-gray-50 rounded">
+                          <div key={teilnehmerIndex} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 mb-3 p-3 bg-gray-50 rounded">
                             <input
                               type="text"
                               value={teilnehmer.vorname}
                               onChange={(e) => updateTeilnehmer(teamIndex, teilnehmerIndex, 'vorname', e.target.value)}
-                              className="px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                              className="px-3 py-2 text-sm sm:text-base border border-gray-300 rounded focus:ring-2 focus:ring-red-500 focus:border-transparent"
                               placeholder={t.firstName}
                               required
                             />
@@ -678,7 +679,7 @@ export default function App() {
                               type="text"
                               value={teilnehmer.nachname}
                               onChange={(e) => updateTeilnehmer(teamIndex, teilnehmerIndex, 'nachname', e.target.value)}
-                              className="px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                              className="px-3 py-2 text-sm sm:text-base border border-gray-300 rounded focus:ring-2 focus:ring-red-500 focus:border-transparent"
                               placeholder={t.lastName}
                               required
                             />
@@ -686,38 +687,40 @@ export default function App() {
                               type="date"
                               value={teilnehmer.geburtsdatum}
                               onChange={(e) => updateTeilnehmer(teamIndex, teilnehmerIndex, 'geburtsdatum', e.target.value)}
-                              className="px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                              className="px-3 py-2 text-sm sm:text-base border border-gray-300 rounded focus:ring-2 focus:ring-red-500 focus:border-transparent"
                             />
                             <input
                               type="text"
                               value={teilnehmer.klassenstufe}
                               onChange={(e) => updateTeilnehmer(teamIndex, teilnehmerIndex, 'klassenstufe', e.target.value)}
-                              className="px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                              className="px-3 py-2 text-sm sm:text-base border border-gray-300 rounded focus:ring-2 focus:ring-red-500 focus:border-transparent"
                               placeholder={t.gradePlaceholder}
                             />
-                            <button
-                              onClick={() => removeTeilnehmer(teamIndex, teilnehmerIndex)}
-                              className="px-3 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors"
-                            >
-                              {t.remove}
-                            </button>
+                            <div className="sm:col-span-2 lg:col-span-1">
+                              <button
+                                onClick={() => removeTeilnehmer(teamIndex, teilnehmerIndex)}
+                                className="w-full px-3 py-2 bg-red-600 text-white text-sm rounded hover:bg-red-700 transition-colors"
+                              >
+                                {t.remove}
+                              </button>
+                            </div>
                           </div>
                         ))}
                       </div>
                     </div>
                   ))}
 
-                  <div className="flex justify-between pt-6">
+                  <div className="flex flex-col sm:flex-row justify-between pt-6 gap-4">
                     <button
                       onClick={prevStep}
-                      className="px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors"
+                      className="w-full sm:w-auto px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors text-sm sm:text-base"
                     >
                       {t.back}
                     </button>
                     <button
                       onClick={nextStep}
                       disabled={!canProceedToStep3()}
-                      className="px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
+                      className="w-full sm:w-auto px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors text-sm sm:text-base"
                     >
                       {t.continueToFee}
                     </button>
@@ -729,40 +732,40 @@ export default function App() {
               {currentStep === 3 && (
                 <div className="space-y-6">
                   <div className="flex items-center mb-6">
-                    <Calculator className="w-6 h-6 text-red-600 mr-3" />
-                    <h2 className="text-2xl font-bold text-gray-800">{t.feeTitle}</h2>
+                    <Calculator className="w-5 h-5 sm:w-6 sm:h-6 text-red-600 mr-3" />
+                    <h2 className="text-xl sm:text-2xl font-bold text-gray-800">{t.feeTitle}</h2>
                   </div>
 
-                  <div className="bg-red-50 rounded-lg p-6">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-4">{t.feeCalculation}</h3>
+                  <div className="bg-red-50 rounded-lg p-4 sm:p-6">
+                    <h3 className="text-base sm:text-lg font-semibold text-gray-800 mb-4">{t.feeCalculation}</h3>
                     
                     <div className="space-y-3">
                       <div className="flex justify-between items-center">
-                        <span className="text-gray-700">{t.numberOfParticipants}</span>
-                        <span className="font-semibold text-lg">{getTotalTeilnehmer()}</span>
+                        <span className="text-sm sm:text-base text-gray-700">{t.numberOfParticipants}</span>
+                        <span className="font-semibold text-base sm:text-lg">{getTotalTeilnehmer()}</span>
                       </div>
                       <div className="flex justify-between items-center">
-                        <span className="text-gray-700">{t.feePerParticipant}</span>
-                        <span className="font-semibold">{TEILNAHMEGEBUEHR_PRO_PERSON}€</span>
+                        <span className="text-sm sm:text-base text-gray-700">{t.feePerParticipant}</span>
+                        <span className="font-semibold text-sm sm:text-base">{TEILNAHMEGEBUEHR_PRO_PERSON}€</span>
                       </div>
                       <hr className="border-gray-300" />
-                      <div className="flex justify-between items-center text-xl">
+                      <div className="flex justify-between items-center text-lg sm:text-xl">
                         <span className="font-bold text-gray-800">{t.totalFee}</span>
                         <span className="font-bold text-red-600">{getTotalGebuehr()}€</span>
                       </div>
                     </div>
                   </div>
 
-                  <div className="flex justify-between pt-6">
+                  <div className="flex flex-col sm:flex-row justify-between pt-6 gap-4">
                     <button
                       onClick={prevStep}
-                      className="px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors"
+                      className="w-full sm:w-auto px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors text-sm sm:text-base"
                     >
                       {t.back}
                     </button>
                     <button
                       onClick={nextStep}
-                      className="px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+                      className="w-full sm:w-auto px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors text-sm sm:text-base"
                     >
                       {t.continueToSummary}
                     </button>
@@ -774,13 +777,13 @@ export default function App() {
               {currentStep === 4 && (
                 <div className="space-y-6">
                   <div className="flex items-center mb-6">
-                    <Trophy className="w-6 h-6 text-red-600 mr-3" />
-                    <h2 className="text-2xl font-bold text-gray-800">{t.summaryTitle}</h2>
+                    <Trophy className="w-5 h-5 sm:w-6 sm:h-6 text-red-600 mr-3" />
+                    <h2 className="text-xl sm:text-2xl font-bold text-gray-800">{t.summaryTitle}</h2>
                   </div>
 
-                  <div className="bg-gray-50 rounded-lg p-6">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-4">{t.teamManagerInfo}</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                  <div className="bg-gray-50 rounded-lg p-4 sm:p-6">
+                    <h3 className="text-base sm:text-lg font-semibold text-gray-800 mb-4">{t.teamManagerInfo}</h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm sm:text-base">
                       <div><span className="font-medium">{t.teamManager}:</span> {formData.teamManagerName}</div>
                       <div><span className="font-medium">{t.country.replace(' *', '')}:</span> {formData.country}</div>
                       <div><span className="font-medium">{t.contactPerson.replace(' *', '')}:</span> {formData.ansprechperson}</div>
@@ -793,17 +796,17 @@ export default function App() {
                   </div>
 
                   <div className="space-y-4">
-                    <h3 className="text-lg font-semibold text-gray-800">{t.teamsCount} ({formData.teams.length})</h3>
+                    <h3 className="text-base sm:text-lg font-semibold text-gray-800">{t.teamsCount} ({formData.teams.length})</h3>
                     {formData.teams.map((team, index) => (
-                      <div key={index} className="border border-gray-200 rounded-lg p-4">
-                        <h4 className="font-semibold text-gray-800 mb-2">{team.teamName}</h4>
-                        <div className="text-sm text-gray-600 mb-2">
+                      <div key={index} className="border border-gray-200 rounded-lg p-3 sm:p-4">
+                        <h4 className="text-sm sm:text-base font-semibold text-gray-800 mb-2">{team.teamName}</h4>
+                        <div className="text-xs sm:text-sm text-gray-600 mb-2">
                           <span className="font-medium">{t.competitions.replace(' *', '')}:</span> {team.wettbewerbe.join(', ')}
                         </div>
-                        <div className="text-sm text-gray-600 mb-2">
+                        <div className="text-xs sm:text-sm text-gray-600 mb-2">
                           <span className="font-medium">{t.participants.replace(' *', '')} ({team.teilnehmer.length}):</span>
                         </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm">
                           {team.teilnehmer.map((teilnehmer, tIndex) => (
                             <div key={tIndex} className="bg-gray-50 p-2 rounded">
                               {teilnehmer.vorname} {teilnehmer.nachname}
@@ -812,7 +815,7 @@ export default function App() {
                           ))}
                         </div>
                         {team.zusaetzlicheInfo && (
-                          <div className="text-sm text-gray-600 mt-2">
+                          <div className="text-xs sm:text-sm text-gray-600 mt-2">
                             <span className="font-medium">{t.additionalInfo}:</span> {team.zusaetzlicheInfo}
                           </div>
                         )}
@@ -820,27 +823,27 @@ export default function App() {
                     ))}
                   </div>
 
-                  <div className="bg-red-50 rounded-lg p-6">
-                    <div className="flex justify-between items-center text-xl">
+                  <div className="bg-red-50 rounded-lg p-4 sm:p-6">
+                    <div className="flex justify-between items-center text-lg sm:text-xl">
                       <span className="font-bold text-gray-800">{t.totalFee}</span>
                       <span className="font-bold text-red-600">{getTotalGebuehr()}€</span>
                     </div>
-                    <div className="text-sm text-gray-600 mt-2">
+                    <div className="text-xs sm:text-sm text-gray-600 mt-2">
                       {getTotalTeilnehmer()} {t.participants.replace(' *', '').toLowerCase()} × {TEILNAHMEGEBUEHR_PRO_PERSON}€
                     </div>
                   </div>
 
-                  <div className="flex justify-between pt-6">
+                  <div className="flex flex-col sm:flex-row justify-between pt-6 gap-4">
                     <button
                       onClick={prevStep}
-                      className="px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors"
+                      className="w-full sm:w-auto px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors text-sm sm:text-base"
                     >
                       {t.back}
                     </button>
                     <button
                       onClick={saveToDatabase}
                       disabled={isSubmitting}
-                      className="px-8 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors font-semibold"
+                      className="w-full sm:w-auto px-8 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors font-semibold text-sm sm:text-base"
                     >
                       {isSubmitting ? t.saving : t.submitRegistration}
                     </button>
