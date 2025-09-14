@@ -402,18 +402,11 @@ export default function App() {
                 </button>
               </div>
             </div>
-            
-            {/* Footer */}
-            <div className="bg-gray-100 px-4 sm:px-8 py-4 text-center">
-              <p className="text-xs sm:text-sm text-gray-600">
-                © 2025 phaenovum - Schülerforschungszentrum Lörrach-Dreiländereck
-              </p>
-            </div>
           </div>
-          
+
           {/* Footer */}
-          <div className="mt-8 bg-gray-100 rounded-b-2xl px-4 sm:px-8 py-4 text-center">
-            <p className="text-xs sm:text-sm text-gray-600">
+          <div className="mt-8 bg-white rounded-lg shadow-sm border border-gray-200 px-4 sm:px-8 py-4 text-center">
+            <p className="text-sm sm:text-base text-black font-medium">
               © 2025 phaenovum - Schülerforschungszentrum Lörrach-Dreiländereck
             </p>
           </div>
@@ -866,6 +859,13 @@ export default function App() {
               )}
             </div>
           </div>
+        </div>
+        
+        {/* Footer */}
+        <div className="mt-8 bg-white rounded-lg shadow-sm border border-gray-200 px-4 sm:px-8 py-4 text-center">
+          <p className="text-sm sm:text-base text-black font-medium">
+            © 2025 phaenovum - Schülerforschungszentrum Lörrach-Dreiländereck
+          </p>
         </div>
       </div>
     </div>
