@@ -412,7 +412,7 @@ export default function App() {
                 <img 
                   src="/image.png" 
                   alt="RoboRave Germany Logo" 
-                  className="h-12 w-auto mr-4"
+                  className="h-20 w-auto mr-6 object-contain"
                 />
                 <h1 className="text-3xl font-bold">RoboRave Germany Anmeldung</h1>
               </div>
