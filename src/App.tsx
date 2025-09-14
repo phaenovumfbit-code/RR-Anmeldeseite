@@ -380,7 +380,7 @@ export default function App() {
                   </p>
                   <a 
                     href="mailto:wettbewerb@roborave.de" 
-                    className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                    className="inline-flex items-center px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
                   >
                     <Mail className="w-4 h-4 mr-2" />
                     wettbewerb@roborave.de
@@ -743,7 +743,7 @@ export default function App() {
                         <hr className="border-gray-300" />
                         <div className="flex justify-between items-center text-xl">
                           <span className="font-bold text-gray-800">Gesamtgebühr:</span>
-                          <span className="font-bold text-blue-600">{getTotalGebuehr()}€</span>
+                          <span className="font-bold text-red-600">{getTotalGebuehr()}€</span>
                         </div>
                       </div>
                     </div>
@@ -758,7 +758,7 @@ export default function App() {
                     </button>
                     <button
                       onClick={nextStep}
-                      className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                      className="px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
                     >
                       Zur Zusammenfassung
                     </button>
@@ -770,7 +770,7 @@ export default function App() {
               {currentStep === 4 && (
                 <div className="space-y-6">
                   <div className="flex items-center mb-6">
-                    <Trophy className="w-6 h-6 text-blue-600 mr-3" />
+                    <Trophy className="w-6 h-6 text-red-600 mr-3" />
                     <h2 className="text-2xl font-bold text-gray-800">Zusammenfassung</h2>
                   </div>
 
@@ -817,12 +817,14 @@ export default function App() {
                   </div>
 
                   <div className="bg-blue-50 rounded-lg p-6">
-                    <div className="flex justify-between items-center text-xl">
-                      <span className="font-bold text-gray-800">Gesamtgebühr:</span>
-                      <span className="font-bold text-blue-600">{getTotalGebuehr()}€</span>
-                    </div>
-                    <div className="text-sm text-gray-600 mt-2">
-                      {getTotalTeilnehmer()} Teilnehmer × {TEILNAHMEGEBUEHR_PRO_PERSON}€
+                    <div className="bg-red-50 rounded-lg p-6">
+                      <div className="flex justify-between items-center text-xl">
+                        <span className="font-bold text-gray-800">Gesamtgebühr:</span>
+                        <span className="font-bold text-red-600">{getTotalGebuehr()}€</span>
+                      </div>
+                      <div className="text-sm text-gray-600 mt-2">
+                        {getTotalTeilnehmer()} Teilnehmer × {TEILNAHMEGEBUEHR_PRO_PERSON}€
+                      </div>
                     </div>
                   </div>
 
@@ -836,7 +838,7 @@ export default function App() {
                     <button
                       onClick={saveToDatabase}
                       disabled={isSubmitting}
-                      className="px-8 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors font-semibold"
+                      className="px-8 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors font-semibold"
                     >
                       {isSubmitting ? 'Speichere...' : 'Anmeldung abschicken'}
                     </button>
