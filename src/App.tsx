@@ -439,13 +439,6 @@ export default function App() {
               >
                 Datenschutz
               </button>
-              <span className="hidden sm:inline text-gray-400">|</span>
-              <button
-                onClick={() => setShowDatenschutz(true)}
-                className="text-sm sm:text-base text-red-600 hover:text-red-800 underline transition-colors"
-              >
-                Datenschutz
-              </button>
             </div>
           </div>
         </div>
