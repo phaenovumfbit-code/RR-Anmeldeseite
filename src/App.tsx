@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { supabase } from '../supabase/supabaseClient';
 import { Users, MapPin, Mail, Building, Trophy, Calculator, CreditCard, CheckCircle } from 'lucide-react';
 import { LanguageModal } from './components/LanguageModal';
+import { Impressum } from './components/Impressum';
 import { Language } from './types/language';
 import { translations } from './translations/translations';
 
@@ -60,6 +61,7 @@ export default function App() {
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [showImpressum, setShowImpressum] = useState(false);
 
   const t = language ? translations[language] : translations.de;
 
@@ -267,6 +269,7 @@ export default function App() {
     setIsSubmitted(false);
     setShowLanguageModal(true);
     setLanguage(null);
+    setShowImpressum(false);
   };
 
   const nextStep = () => {
@@ -294,6 +297,11 @@ export default function App() {
   // Language Selection Modal
   if (showLanguageModal) {
     return <LanguageModal isOpen={showLanguageModal} onSelectLanguage={handleLanguageSelect} />;
+  }
+
+  // Impressum Page
+  if (showImpressum) {
+    return <Impressum onBack={() => setShowImpressum(false)} />;
   }
 
   // Bestätigungsseite nach erfolgreichem Absenden
@@ -406,9 +414,18 @@ export default function App() {
 
           {/* Footer */}
           <div className="mt-8 bg-white rounded-lg shadow-sm border border-gray-200 px-4 sm:px-8 py-4 text-center">
-            <p className="text-sm sm:text-base text-black font-medium">
-              © 2025 phaenovum - Schülerforschungszentrum Lörrach-Dreiländereck
-            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4">
+              <p className="text-sm sm:text-base text-black font-medium">
+                © 2025 phaenovum - Schülerforschungszentrum Lörrach-Dreiländereck
+              </p>
+              <span className="hidden sm:inline text-gray-400">|</span>
+              <button
+                onClick={() => setShowImpressum(true)}
+                className="text-sm sm:text-base text-red-600 hover:text-red-800 underline transition-colors"
+              >
+                Impressum
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -863,9 +880,18 @@ export default function App() {
         
         {/* Footer */}
         <div className="mt-8 bg-white rounded-lg shadow-sm border border-gray-200 px-4 sm:px-8 py-4 text-center">
-          <p className="text-sm sm:text-base text-black font-medium">
-            © 2025 phaenovum - Schülerforschungszentrum Lörrach-Dreiländereck
-          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4">
+            <p className="text-sm sm:text-base text-black font-medium">
+              © 2025 phaenovum - Schülerforschungszentrum Lörrach-Dreiländereck
+            </p>
+            <span className="hidden sm:inline text-gray-400">|</span>
+            <button
+              onClick={() => setShowImpressum(true)}
+              className="text-sm sm:text-base text-red-600 hover:text-red-800 underline transition-colors"
+            >
+              Impressum
+            </button>
+          </div>
         </div>
       </div>
     </div>
