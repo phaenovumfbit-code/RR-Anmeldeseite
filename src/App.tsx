@@ -400,7 +400,6 @@ export default function App() {
       </div>
     );
   }
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       <div className="container mx-auto px-4 py-8">
@@ -744,7 +743,7 @@ export default function App() {
                         <hr className="border-gray-300" />
                         <div className="flex justify-between items-center text-xl">
                           <span className="font-bold text-gray-800">Gesamtgebühr:</span>
-                          <span className="font-bold text-red-600">{getTotalGebuehr()}€</span>
+                          <span className="font-bold text-blue-600">{getTotalGebuehr()}€</span>
                         </div>
                       </div>
                     </div>
