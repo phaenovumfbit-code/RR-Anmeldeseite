@@ -1,19 +1,9 @@
 import React, { useState } from 'react';
 import { supabase } from '../supabase/supabaseClient';
 import { Users, MapPin, Mail, Building, Trophy, Calculator, CreditCard, CheckCircle } from 'lucide-react';
-
-// Beispiel-Anmeldefunktion für Supabase Auth
-const signIn = async () => {
-  const { data, error } = await supabase.auth.signInWithPassword({
-    email: 'user@example.com',
-    password: 'password123',
-  });
-  if (error) {
-    console.error('Fehler bei Anmeldung:', error.message);
-  } else {
-    console.log('Angemeldeter Benutzer:', data);
-  }
-};
+import { LanguageModal } from './components/LanguageModal';
+import { Language } from './types/language';
+import { translations } from './translations/translations';
 
 interface Teilnehmer {
   vorname: string;
@@ -53,6 +43,9 @@ const WETTBEWERBE = [
 const TEILNAHMEGEBUEHR_PRO_PERSON = 10;
 
 export default function App() {
+  const [language, setLanguage] = useState<Language | null>(null);
+  const [showLanguageModal, setShowLanguageModal] = useState(true);
+  
   const [formData, setFormData] = useState<FormData>({
     teamManagerName: '',
     adresse: '',
@@ -67,6 +60,13 @@ export default function App() {
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const t = language ? translations[language] : translations.de;
+
+  const handleLanguageSelect = (selectedLanguage: Language) => {
+    setLanguage(selectedLanguage);
+    setShowLanguageModal(false);
+  };
 
   const addTeam = () => {
     setFormData(prev => ({
@@ -265,6 +265,8 @@ export default function App() {
     });
     setCurrentStep(1);
     setIsSubmitted(false);
+    setShowLanguageModal(true);
+    setLanguage(null);
   };
 
   const nextStep = () => {
@@ -289,6 +291,11 @@ export default function App() {
     );
   };
 
+  // Language Selection Modal
+  if (showLanguageModal) {
+    return <LanguageModal isOpen={showLanguageModal} onSelectLanguage={handleLanguageSelect} />;
+  }
+
   // Bestätigungsseite nach erfolgreichem Absenden
   if (isSubmitted) {
     return (
@@ -298,31 +305,31 @@ export default function App() {
             <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
               <div className="bg-gradient-to-r from-green-600 to-emerald-600 text-white p-8 text-center">
                 <CheckCircle className="w-16 h-16 mx-auto mb-4" />
-                <h1 className="text-3xl font-bold mb-2">Anmeldung erfolgreich!</h1>
-                <p className="text-green-100">Ihre Registrierung wurde erfolgreich übermittelt</p>
+                <h1 className="text-3xl font-bold mb-2">{t.registrationSuccessful}</h1>
+                <p className="text-green-100">{t.registrationSubmitted}</p>
               </div>
 
               <div className="p-8 text-center">
                 <div className="mb-8">
-                  <h2 className="text-2xl font-bold text-gray-800 mb-4">Vielen Dank für Ihre Anmeldung!</h2>
+                  <h2 className="text-2xl font-bold text-gray-800 mb-4">{t.thankYou}</h2>
                   <p className="text-gray-600 mb-6">
-                    Ihre Anmeldung für RoboRave 2025 wurde erfolgreich übermittelt und gespeichert.
+                    {t.registrationSubmitted}
                   </p>
                 </div>
 
                 <div className="bg-blue-50 rounded-lg p-6 mb-8">
-                  <h3 className="text-lg font-semibold text-gray-800 mb-3">Nächste Schritte:</h3>
+                  <h3 className="text-lg font-semibold text-gray-800 mb-3">{t.nextSteps}</h3>
                   <div className="text-left space-y-2 text-gray-700">
-                    <p>• Überweisen Sie die Teilnahmegebühr mit dem angegebenen Verwendungszweck</p>
-                    <p>• Sie erhalten eine Bestätigung per E-Mail</p>
-                    <p>• Weitere Informationen folgen vor dem Wettbewerb</p>
+                    {t.nextStepsText.split('\n').map((line, index) => (
+                      <p key={index}>{line}</p>
+                    ))}
                   </div>
                 </div>
 
                 <div className="bg-gray-50 rounded-lg p-6 mb-8">
                   <div className="flex items-center mb-4">
                     <CreditCard className="w-6 h-6 text-green-600 mr-3" />
-                    <h3 className="text-lg font-semibold text-gray-800">Zahlungsinformationen</h3>
+                    <h3 className="text-lg font-semibold text-gray-800">{t.paymentInfo}</h3>
                   </div>
                   
                   <div className="space-y-3 text-sm">
@@ -356,27 +363,27 @@ export default function App() {
                 </div>
 
                 <div className="bg-yellow-50 rounded-lg p-6 mb-8">
-                  <h4 className="font-semibold text-gray-800 mb-3">Verwendungszweck für Ihre Teams:</h4>
+                  <h4 className="font-semibold text-gray-800 mb-3">{t.paymentPurpose}</h4>
                   <div className="space-y-2">
                     {formData.teams.map((team, index) => (
                       <div key={index} className="font-mono text-sm bg-white p-3 rounded border">
-                        RoboRave 2025, {team.teamName || `Team ${index + 1}`}
+                        RoboRave 2025, {team.teamName || `${t.team} ${index + 1}`}
                       </div>
                     ))}
                   </div>
                   <div className="mt-4 text-sm text-gray-600">
-                    <p><span className="font-medium">Gesamtgebühr:</span> {getTotalGebuehr()}€</p>
-                    <p><span className="font-medium">Teilnehmer:</span> {getTotalTeilnehmer()}</p>
+                    <p><span className="font-medium">{t.totalFee}</span> {getTotalGebuehr()}€</p>
+                    <p><span className="font-medium">{t.participants}:</span> {getTotalTeilnehmer()}</p>
                   </div>
                 </div>
 
                 <div className="bg-gray-50 rounded-lg p-6 mb-8">
                   <div className="flex items-center justify-center mb-3">
                     <Mail className="w-5 h-5 text-blue-600 mr-2" />
-                    <h3 className="text-lg font-semibold text-gray-800">Haben Sie Fragen?</h3>
+                    <h3 className="text-lg font-semibold text-gray-800">{t.questions}</h3>
                   </div>
                   <p className="text-gray-600 mb-3">
-                    Bei weiteren Fragen wenden Sie sich gerne an uns:
+                    {t.questionsText}
                   </p>
                   <a 
                     href="mailto:wettbewerb@roborave.de" 
@@ -391,7 +398,7 @@ export default function App() {
                   onClick={resetForm}
                   className="px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors font-semibold"
                 >
-                  Neue Anmeldung erstellen
+                  {t.newRegistration}
                 </button>
               </div>
             </div>
@@ -414,9 +421,9 @@ export default function App() {
                   alt="RoboRave Germany Logo" 
                   className="h-12 w-auto mr-4 object-contain"
                 />
-                <h1 className="text-3xl font-bold">RoboRave Germany Anmeldung</h1>
+                <h1 className="text-3xl font-bold">{t.title}</h1>
               </div>
-              <p className="text-red-100 text-center">Registrierung für Teams und Teilnehmer</p>
+              <p className="text-red-100 text-center">{t.subtitle}</p>
             </div>
 
             {/* Progress Bar */}
@@ -440,10 +447,10 @@ export default function App() {
                 ))}
               </div>
               <div className="flex justify-between mt-2 text-sm text-gray-600">
-                <span>Team-Manager</span>
-                <span>Teams</span>
-                <span>Teilnahmegebühr</span>
-                <span>Zusammenfassung</span>
+                <span>{t.teamManager}</span>
+                <span>{t.teams}</span>
+                <span>{t.participationFee}</span>
+                <span>{t.summary}</span>
               </div>
             </div>
 
@@ -453,102 +460,102 @@ export default function App() {
                 <div className="space-y-6">
                   <div className="flex items-center mb-6">
                     <Building className="w-6 h-6 text-red-600 mr-3" />
-                    <h2 className="text-2xl font-bold text-gray-800">Team-Manager</h2>
+                    <h2 className="text-2xl font-bold text-gray-800">{t.teamManagerTitle}</h2>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Schule / Institution
+                        {t.schoolInstitution}
                       </label>
                       <input
                         type="text"
                         value={formData.teamManagerName}
                         onChange={(e) => setFormData(prev => ({ ...prev, teamManagerName: e.target.value }))}
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                        placeholder="Name der Schule / Institution"
+                        placeholder={t.schoolInstitutionPlaceholder}
                         required
                       />
                     </div>
 
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Land *
+                        {t.country}
                       </label>
                       <input
                         type="text"
                         value={formData.country}
                         onChange={(e) => setFormData(prev => ({ ...prev, country: e.target.value }))}
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                        placeholder="Deutschland"
+                        placeholder={t.countryPlaceholder}
                         required
                       />
                     </div>
 
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Adresse
+                        {t.address}
                       </label>
                       <input
                         type="text"
                         value={formData.adresse}
                         onChange={(e) => setFormData(prev => ({ ...prev, adresse: e.target.value }))}
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                        placeholder="Straße und Hausnummer"
+                        placeholder={t.addressPlaceholder}
                       />
                     </div>
 
                     <div className="grid grid-cols-2 gap-4">
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">
-                          PLZ
+                          {t.postalCode}
                         </label>
                         <input
                           type="text"
                           value={formData.plz}
                           onChange={(e) => setFormData(prev => ({ ...prev, plz: e.target.value }))}
                           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                          placeholder="12345"
+                          placeholder={t.postalCodePlaceholder}
                         />
                       </div>
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">
-                          Stadt
+                          {t.city}
                         </label>
                         <input
                           type="text"
                           value={formData.stadt}
                           onChange={(e) => setFormData(prev => ({ ...prev, stadt: e.target.value }))}
                           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                          placeholder="Musterstadt"
+                          placeholder={t.cityPlaceholder}
                         />
                       </div>
                     </div>
 
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Ansprechperson *
+                        {t.contactPerson}
                       </label>
                       <input
                         type="text"
                         value={formData.ansprechperson}
                         onChange={(e) => setFormData(prev => ({ ...prev, ansprechperson: e.target.value }))}
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                        placeholder="Name der Ansprechperson"
+                        placeholder={t.contactPersonPlaceholder}
                         required
                       />
                     </div>
 
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        E-Mail *
+                        {t.email}
                       </label>
                       <input
                         type="email"
                         value={formData.email}
                         onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                        placeholder="beispiel@email.de"
+                        placeholder={t.emailPlaceholder}
                         required
                       />
                     </div>
@@ -560,7 +567,7 @@ export default function App() {
                       disabled={!canProceedToStep2()}
                       className="px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
                     >
-                      Weiter zu Teams
+                      {t.continueToTeams}
                     </button>
                   </div>
                 </div>
@@ -572,53 +579,53 @@ export default function App() {
                   <div className="flex items-center justify-between mb-6">
                     <div className="flex items-center">
                       <Users className="w-6 h-6 text-red-600 mr-3" />
-                      <h2 className="text-2xl font-bold text-gray-800">Teams und Teilnehmer</h2>
+                      <h2 className="text-2xl font-bold text-gray-800">{t.teamsTitle}</h2>
                     </div>
                     <button
                       onClick={addTeam}
                       className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
                     >
-                      + Team hinzufügen
+                      {t.addTeam}
                     </button>
                   </div>
 
                   {formData.teams.map((team, teamIndex) => (
                     <div key={teamIndex} className="border border-gray-200 rounded-lg p-6 space-y-4">
                       <div className="flex items-center justify-between">
-                        <h3 className="text-lg font-semibold text-gray-800">Team {teamIndex + 1}</h3>
+                        <h3 className="text-lg font-semibold text-gray-800">{t.team} {teamIndex + 1}</h3>
                         <button
                           onClick={() => removeTeam(teamIndex)}
                           className="text-red-600 hover:text-red-800 transition-colors"
                         >
-                          Team entfernen
+                          {t.removeTeam}
                         </button>
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                           <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Team Name *
+                            {t.teamName}
                           </label>
                           <input
                             type="text"
                             value={team.teamName}
                             onChange={(e) => updateTeam(teamIndex, 'teamName', e.target.value)}
                             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                            placeholder="Team Name"
+                            placeholder={t.teamNamePlaceholder}
                             required
                           />
                         </div>
 
                         <div>
                           <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Zusätzliche Informationen
+                            {t.additionalInfo}
                           </label>
                           <input
                             type="text"
                             value={team.zusaetzlicheInfo}
                             onChange={(e) => updateTeam(teamIndex, 'zusaetzlicheInfo', e.target.value)}
                             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                            placeholder="Optionale Zusatzinfos"
+                            placeholder={t.additionalInfoPlaceholder}
                           />
                         </div>
                       </div>
@@ -626,7 +633,7 @@ export default function App() {
                       {/* Wettbewerbe */}
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">
-                          Wettbewerbe *
+                          {t.competitions}
                         </label>
                         <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                           {WETTBEWERBE.map((wettbewerb) => (
@@ -637,7 +644,7 @@ export default function App() {
                                 onChange={() => toggleWettbewerb(teamIndex, wettbewerb)}
                                 className="rounded border-gray-300 text-red-600 focus:ring-red-500"
                               />
-                              <span className="text-sm text-gray-700">{wettbewerb}</span>
+                              <span className="text-sm text-gray-700">{t[wettbewerb.toLowerCase().replace(' ', '') as keyof typeof t] || wettbewerb}</span>
                             </label>
                           ))}
                         </div>
@@ -647,13 +654,13 @@ export default function App() {
                       <div>
                         <div className="flex items-center justify-between mb-3">
                           <label className="block text-sm font-medium text-gray-700">
-                            Teilnehmer *
+                            {t.participants}
                           </label>
                           <button
                             onClick={() => addTeilnehmer(teamIndex)}
                             className="px-3 py-1 bg-red-600 text-white text-sm rounded hover:bg-red-700 transition-colors"
                           >
-                            + Teilnehmer
+                            {t.addParticipant}
                           </button>
                         </div>
 
@@ -664,7 +671,7 @@ export default function App() {
                               value={teilnehmer.vorname}
                               onChange={(e) => updateTeilnehmer(teamIndex, teilnehmerIndex, 'vorname', e.target.value)}
                               className="px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                              placeholder="Vorname"
+                              placeholder={t.firstName}
                               required
                             />
                             <input
@@ -672,7 +679,7 @@ export default function App() {
                               value={teilnehmer.nachname}
                               onChange={(e) => updateTeilnehmer(teamIndex, teilnehmerIndex, 'nachname', e.target.value)}
                               className="px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                              placeholder="Nachname"
+                              placeholder={t.lastName}
                               required
                             />
                             <input
@@ -686,13 +693,13 @@ export default function App() {
                               value={teilnehmer.klassenstufe}
                               onChange={(e) => updateTeilnehmer(teamIndex, teilnehmerIndex, 'klassenstufe', e.target.value)}
                               className="px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                              placeholder="Klasse"
+                              placeholder={t.gradePlaceholder}
                             />
                             <button
                               onClick={() => removeTeilnehmer(teamIndex, teilnehmerIndex)}
                               className="px-3 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors"
                             >
-                              Entfernen
+                              {t.remove}
                             </button>
                           </div>
                         ))}
@@ -705,14 +712,14 @@ export default function App() {
                       onClick={prevStep}
                       className="px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors"
                     >
-                      Zurück
+                      {t.back}
                     </button>
                     <button
                       onClick={nextStep}
                       disabled={!canProceedToStep3()}
                       className="px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
                     >
-                      Weiter zur Teilnahmegebühr
+                      {t.continueToFee}
                     </button>
                   </div>
                 </div>
@@ -723,24 +730,24 @@ export default function App() {
                 <div className="space-y-6">
                   <div className="flex items-center mb-6">
                     <Calculator className="w-6 h-6 text-red-600 mr-3" />
-                    <h2 className="text-2xl font-bold text-gray-800">Teilnahmegebühr</h2>
+                    <h2 className="text-2xl font-bold text-gray-800">{t.feeTitle}</h2>
                   </div>
 
                   <div className="bg-red-50 rounded-lg p-6">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-4">Gebührenberechnung</h3>
+                    <h3 className="text-lg font-semibold text-gray-800 mb-4">{t.feeCalculation}</h3>
                     
                     <div className="space-y-3">
                       <div className="flex justify-between items-center">
-                        <span className="text-gray-700">Anzahl Teilnehmer:</span>
+                        <span className="text-gray-700">{t.numberOfParticipants}</span>
                         <span className="font-semibold text-lg">{getTotalTeilnehmer()}</span>
                       </div>
                       <div className="flex justify-between items-center">
-                        <span className="text-gray-700">Gebühr pro Teilnehmer:</span>
+                        <span className="text-gray-700">{t.feePerParticipant}</span>
                         <span className="font-semibold">{TEILNAHMEGEBUEHR_PRO_PERSON}€</span>
                       </div>
                       <hr className="border-gray-300" />
                       <div className="flex justify-between items-center text-xl">
-                        <span className="font-bold text-gray-800">Gesamtgebühr:</span>
+                        <span className="font-bold text-gray-800">{t.totalFee}</span>
                         <span className="font-bold text-red-600">{getTotalGebuehr()}€</span>
                       </div>
                     </div>
@@ -751,13 +758,13 @@ export default function App() {
                       onClick={prevStep}
                       className="px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors"
                     >
-                      Zurück
+                      {t.back}
                     </button>
                     <button
                       onClick={nextStep}
                       className="px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
                     >
-                      Zur Zusammenfassung
+                      {t.continueToSummary}
                     </button>
                   </div>
                 </div>
@@ -768,33 +775,33 @@ export default function App() {
                 <div className="space-y-6">
                   <div className="flex items-center mb-6">
                     <Trophy className="w-6 h-6 text-red-600 mr-3" />
-                    <h2 className="text-2xl font-bold text-gray-800">Zusammenfassung</h2>
+                    <h2 className="text-2xl font-bold text-gray-800">{t.summaryTitle}</h2>
                   </div>
 
                   <div className="bg-gray-50 rounded-lg p-6">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-4">Team-Manager Information</h3>
+                    <h3 className="text-lg font-semibold text-gray-800 mb-4">{t.teamManagerInfo}</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-                      <div><span className="font-medium">Team-Manager:</span> {formData.teamManagerName}</div>
-                      <div><span className="font-medium">Land:</span> {formData.country}</div>
-                      <div><span className="font-medium">Ansprechperson:</span> {formData.ansprechperson}</div>
-                      <div><span className="font-medium">E-Mail:</span> {formData.email}</div>
-                      {formData.adresse && <div><span className="font-medium">Adresse:</span> {formData.adresse}</div>}
+                      <div><span className="font-medium">{t.teamManager}:</span> {formData.teamManagerName}</div>
+                      <div><span className="font-medium">{t.country.replace(' *', '')}:</span> {formData.country}</div>
+                      <div><span className="font-medium">{t.contactPerson.replace(' *', '')}:</span> {formData.ansprechperson}</div>
+                      <div><span className="font-medium">{t.email.replace(' *', '')}:</span> {formData.email}</div>
+                      {formData.adresse && <div><span className="font-medium">{t.address}:</span> {formData.adresse}</div>}
                       {(formData.plz || formData.stadt) && (
-                        <div><span className="font-medium">Ort:</span> {formData.plz} {formData.stadt}</div>
+                        <div><span className="font-medium">{t.city}:</span> {formData.plz} {formData.stadt}</div>
                       )}
                     </div>
                   </div>
 
                   <div className="space-y-4">
-                    <h3 className="text-lg font-semibold text-gray-800">Teams ({formData.teams.length})</h3>
+                    <h3 className="text-lg font-semibold text-gray-800">{t.teamsCount} ({formData.teams.length})</h3>
                     {formData.teams.map((team, index) => (
                       <div key={index} className="border border-gray-200 rounded-lg p-4">
                         <h4 className="font-semibold text-gray-800 mb-2">{team.teamName}</h4>
                         <div className="text-sm text-gray-600 mb-2">
-                          <span className="font-medium">Wettbewerbe:</span> {team.wettbewerbe.join(', ')}
+                          <span className="font-medium">{t.competitions.replace(' *', '')}:</span> {team.wettbewerbe.join(', ')}
                         </div>
                         <div className="text-sm text-gray-600 mb-2">
-                          <span className="font-medium">Teilnehmer ({team.teilnehmer.length}):</span>
+                          <span className="font-medium">{t.participants.replace(' *', '')} ({team.teilnehmer.length}):</span>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm">
                           {team.teilnehmer.map((teilnehmer, tIndex) => (
@@ -806,7 +813,7 @@ export default function App() {
                         </div>
                         {team.zusaetzlicheInfo && (
                           <div className="text-sm text-gray-600 mt-2">
-                            <span className="font-medium">Zusätzliche Info:</span> {team.zusaetzlicheInfo}
+                            <span className="font-medium">{t.additionalInfo}:</span> {team.zusaetzlicheInfo}
                           </div>
                         )}
                       </div>
@@ -815,11 +822,11 @@ export default function App() {
 
                   <div className="bg-red-50 rounded-lg p-6">
                     <div className="flex justify-between items-center text-xl">
-                      <span className="font-bold text-gray-800">Gesamtgebühr:</span>
+                      <span className="font-bold text-gray-800">{t.totalFee}</span>
                       <span className="font-bold text-red-600">{getTotalGebuehr()}€</span>
                     </div>
                     <div className="text-sm text-gray-600 mt-2">
-                      {getTotalTeilnehmer()} Teilnehmer × {TEILNAHMEGEBUEHR_PRO_PERSON}€
+                      {getTotalTeilnehmer()} {t.participants.replace(' *', '').toLowerCase()} × {TEILNAHMEGEBUEHR_PRO_PERSON}€
                     </div>
                   </div>
 
@@ -828,14 +835,14 @@ export default function App() {
                       onClick={prevStep}
                       className="px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors"
                     >
-                      Zurück
+                      {t.back}
                     </button>
                     <button
                       onClick={saveToDatabase}
                       disabled={isSubmitting}
                       className="px-8 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors font-semibold"
                     >
-                      {isSubmitting ? 'Speichere...' : 'Anmeldung abschicken'}
+                      {isSubmitting ? t.saving : t.submitRegistration}
                     </button>
                   </div>
                 </div>
