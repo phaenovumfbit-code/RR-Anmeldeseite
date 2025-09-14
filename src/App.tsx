@@ -3,6 +3,7 @@ import { supabase } from '../supabase/supabaseClient';
 import { Users, MapPin, Mail, Building, Trophy, Calculator, CreditCard, CheckCircle } from 'lucide-react';
 import { LanguageModal } from './components/LanguageModal';
 import { Impressum } from './components/Impressum';
+import { Datenschutz } from './components/Datenschutz';
 import { Language } from './types/language';
 import { translations } from './translations/translations';
 
@@ -62,6 +63,7 @@ export default function App() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [showImpressum, setShowImpressum] = useState(false);
+  const [showDatenschutz, setShowDatenschutz] = useState(false);
 
   const t = language ? translations[language] : translations.de;
 
@@ -304,6 +306,11 @@ export default function App() {
     return <Impressum onBack={() => setShowImpressum(false)} />;
   }
 
+  // Datenschutz Page
+  if (showDatenschutz) {
+    return <Datenschutz onBack={() => setShowDatenschutz(false)} />;
+  }
+
   // Bestätigungsseite nach erfolgreichem Absenden
   if (isSubmitted) {
     return (
@@ -424,6 +431,20 @@ export default function App() {
                 className="text-sm sm:text-base text-red-600 hover:text-red-800 underline transition-colors"
               >
                 Impressum
+              </button>
+              <span className="hidden sm:inline text-gray-400">|</span>
+              <button
+                onClick={() => setShowDatenschutz(true)}
+                className="text-sm sm:text-base text-red-600 hover:text-red-800 underline transition-colors"
+              >
+                Datenschutz
+              </button>
+              <span className="hidden sm:inline text-gray-400">|</span>
+              <button
+                onClick={() => setShowDatenschutz(true)}
+                className="text-sm sm:text-base text-red-600 hover:text-red-800 underline transition-colors"
+              >
+                Datenschutz
               </button>
             </div>
           </div>
