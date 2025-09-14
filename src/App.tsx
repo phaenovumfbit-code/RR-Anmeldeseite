@@ -440,12 +440,16 @@ export default function App() {
                 Datenschutz
               </button>
               <span className="hidden sm:inline text-gray-400">|</span>
-              <a
-                href="mailto:wettbewerb@roborave.de"
-                className="text-sm sm:text-base text-red-600 hover:text-red-800 underline transition-colors"
-              >
-                Kontakt: wettbewerb@roborave.de
-              </a>
+              <div className="text-sm sm:text-base text-black">
+                Kontakt: <a
+                  href="mailto:wettbewerb@roborave.de"
+                  className="text-red-600 hover:text-red-800 underline transition-colors"
+                >
+                  wettbewerb@roborave.de
+                </a>
+              </div>
+                </a>
+              </div>
             </div>
           </div>
         </div>
