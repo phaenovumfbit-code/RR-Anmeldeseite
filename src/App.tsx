@@ -292,7 +292,7 @@ export default function App() {
   // Bestätigungsseite nach erfolgreichem Absenden
   if (isSubmitted) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-red-50 to-red-100">
+      <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100">
         <div className="container mx-auto px-4 py-8">
           <div className="max-w-2xl mx-auto">
             <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
@@ -380,7 +380,7 @@ export default function App() {
                   </p>
                   <a 
                     href="mailto:wettbewerb@roborave.de" 
-                    className="inline-flex items-center px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+                    className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
                   >
                     <Mail className="w-4 h-4 mr-2" />
                     wettbewerb@roborave.de
@@ -389,7 +389,7 @@ export default function App() {
 
                 <button
                   onClick={resetForm}
-                  className="px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors font-semibold"
+                  className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-semibold"
                 >
                   Neue Anmeldung erstellen
                 </button>
@@ -401,21 +401,23 @@ export default function App() {
     );
   }
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-50 to-red-100">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
           <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
             {/* Header */}
-            <div className="bg-gradient-to-r from-red-600 to-red-700 text-white p-8">
-              <div className="flex items-center justify-center mb-4">
-                <img 
-                  src="/image.png" 
-                  alt="RoboRave Germany Logo" 
-                  className="h-12 w-auto mr-4"
-                />
-                <h1 className="text-3xl font-bold">RoboRave Germany Anmeldung</h1>
+            <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-8">
+              <div className="bg-gradient-to-r from-red-600 to-red-700 text-white p-8">
+                <div className="flex items-center justify-center mb-4">
+                  <img 
+                    src="/public/image.png" 
+                    alt="RoboRave Germany Logo" 
+                    className="h-12 w-auto mr-4"
+                  />
+                  <h1 className="text-3xl font-bold">RoboRave Germany Anmeldung</h1>
+                </div>
+                <p className="text-red-100 text-center">Registrierung für Teams und Teilnehmer</p>
               </div>
-              <p className="text-red-100 text-center">Registrierung für Teams und Teilnehmer</p>
             </div>
 
             {/* Progress Bar */}
@@ -727,21 +729,22 @@ export default function App() {
 
                   <div className="bg-blue-50 rounded-lg p-6">
                     <div className="bg-red-50 rounded-lg p-6">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-4">Gebührenberechnung</h3>
-                    
-                    <div className="space-y-3">
-                      <div className="flex justify-between items-center">
-                        <span className="text-gray-700">Anzahl Teilnehmer:</span>
-                        <span className="font-semibold text-lg">{getTotalTeilnehmer()}</span>
-                      </div>
-                      <div className="flex justify-between items-center">
-                        <span className="text-gray-700">Gebühr pro Teilnehmer:</span>
-                        <span className="font-semibold">{TEILNAHMEGEBUEHR_PRO_PERSON}€</span>
-                      </div>
-                      <hr className="border-gray-300" />
-                      <div className="flex justify-between items-center text-xl">
-                        <span className="font-bold text-gray-800">Gesamtgebühr:</span>
-                        <span className="font-bold text-red-600">{getTotalGebuehr()}€</span>
+                      <h3 className="text-lg font-semibold text-gray-800 mb-4">Gebührenberechnung</h3>
+                      
+                      <div className="space-y-3">
+                        <div className="flex justify-between items-center">
+                          <span className="text-gray-700">Anzahl Teilnehmer:</span>
+                          <span className="font-semibold text-lg">{getTotalTeilnehmer()}</span>
+                        </div>
+                        <div className="flex justify-between items-center">
+                          <span className="text-gray-700">Gebühr pro Teilnehmer:</span>
+                          <span className="font-semibold">{TEILNAHMEGEBUEHR_PRO_PERSON}€</span>
+                        </div>
+                        <hr className="border-gray-300" />
+                        <div className="flex justify-between items-center text-xl">
+                          <span className="font-bold text-gray-800">Gesamtgebühr:</span>
+                          <span className="font-bold text-red-600">{getTotalGebuehr()}€</span>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -767,7 +770,7 @@ export default function App() {
               {currentStep === 4 && (
                 <div className="space-y-6">
                   <div className="flex items-center mb-6">
-                    <Trophy className="w-6 h-6 text-red-600 mr-3" />
+                    <Trophy className="w-6 h-6 text-blue-600 mr-3" />
                     <h2 className="text-2xl font-bold text-gray-800">Zusammenfassung</h2>
                   </div>
 
@@ -814,10 +817,9 @@ export default function App() {
                   </div>
 
                   <div className="bg-blue-50 rounded-lg p-6">
-                  <div className="bg-red-50 rounded-lg p-6">
                     <div className="flex justify-between items-center text-xl">
                       <span className="font-bold text-gray-800">Gesamtgebühr:</span>
-                      <span className="font-bold text-red-600">{getTotalGebuehr()}€</span>
+                      <span className="font-bold text-blue-600">{getTotalGebuehr()}€</span>
                     </div>
                     <div className="text-sm text-gray-600 mt-2">
                       {getTotalTeilnehmer()} Teilnehmer × {TEILNAHMEGEBUEHR_PRO_PERSON}€
@@ -834,7 +836,7 @@ export default function App() {
                     <button
                       onClick={saveToDatabase}
                       disabled={isSubmitting}
-                      className="px-8 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors font-semibold"
+                      className="px-8 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors font-semibold"
                     >
                       {isSubmitting ? 'Speichere...' : 'Anmeldung abschicken'}
                     </button>
