@@ -401,23 +401,21 @@ export default function App() {
     );
   }
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-gradient-to-br from-red-50 to-red-100">
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
           <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
             {/* Header */}
-            <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-8">
-              <div className="bg-gradient-to-r from-red-600 to-red-700 text-white p-8">
-                <div className="flex items-center justify-center mb-4">
-                  <img 
-                    src="/public/image.png" 
-                    alt="RoboRave Germany Logo" 
-                    className="h-12 w-auto mr-4"
-                  />
-                  <h1 className="text-3xl font-bold">RoboRave Germany Anmeldung</h1>
-                </div>
-                <p className="text-red-100 text-center">Registrierung für Teams und Teilnehmer</p>
+            <div className="bg-gradient-to-r from-red-600 to-red-700 text-white p-8">
+              <div className="flex items-center justify-center mb-4">
+                <img 
+                  src="/image.png" 
+                  alt="RoboRave Germany Logo" 
+                  className="h-12 w-auto mr-4"
+                />
+                <h1 className="text-3xl font-bold">RoboRave Germany Anmeldung</h1>
               </div>
+              <p className="text-red-100 text-center">Registrierung für Teams und Teilnehmer</p>
             </div>
 
             {/* Progress Bar */}
@@ -728,7 +726,7 @@ export default function App() {
                   </div>
 
                   <div className="bg-blue-50 rounded-lg p-6">
-                  <div className="bg-red-50 rounded-lg p-6">
+                    <div className="bg-red-50 rounded-lg p-6">
                     <h3 className="text-lg font-semibold text-gray-800 mb-4">Gebührenberechnung</h3>
                     
                     <div className="space-y-3">
