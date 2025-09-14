@@ -34,12 +34,12 @@ interface FormData {
 }
 
 const WETTBEWERBE = [
-  'Line Following',
-  'Sumo',
-  'Maze',
-  'Dancing',
-  'Innovation',
-  'Jousting'
+  'Jousting Challene',
+  'SumoBot Challenge',
+  'a-maze-ing Challenge',
+  'Fire Fighter Challenge',
+  'Entrepreneurial',
+  'Line Following Challenge'
 ];
 
 const TEILNAHMEGEBUEHR_PRO_PERSON = 10;
