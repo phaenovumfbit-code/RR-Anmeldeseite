@@ -292,7 +292,7 @@ export default function App() {
   // Bestätigungsseite nach erfolgreichem Absenden
   if (isSubmitted) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100">
+      <div className="min-h-screen bg-gradient-to-br from-red-50 to-red-100">
         <div className="container mx-auto px-4 py-8">
           <div className="max-w-2xl mx-auto">
             <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
@@ -380,7 +380,7 @@ export default function App() {
                   </p>
                   <a 
                     href="mailto:wettbewerb@roborave.de" 
-                    className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                    className="inline-flex items-center px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
                   >
                     <Mail className="w-4 h-4 mr-2" />
                     wettbewerb@roborave.de
@@ -389,7 +389,7 @@ export default function App() {
 
                 <button
                   onClick={resetForm}
-                  className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-semibold"
+                  className="px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors font-semibold"
                 >
                   Neue Anmeldung erstellen
                 </button>
@@ -407,8 +407,17 @@ export default function App() {
           <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
             {/* Header */}
             <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-8">
-              <h1 className="text-3xl font-bold mb-2">RoboRave 2025 Anmeldung</h1>
-              <p className="text-blue-100">Registrierung für Teams und Teilnehmer</p>
+              <div className="bg-gradient-to-r from-red-600 to-red-700 text-white p-8">
+                <div className="flex items-center justify-center mb-4">
+                  <img 
+                    src="/public/image.png" 
+                    alt="RoboRave Germany Logo" 
+                    className="h-12 w-auto mr-4"
+                  />
+                  <h1 className="text-3xl font-bold">RoboRave Germany Anmeldung</h1>
+                </div>
+                <p className="text-red-100 text-center">Registrierung für Teams und Teilnehmer</p>
+              </div>
             </div>
 
             {/* Progress Bar */}
@@ -418,14 +427,14 @@ export default function App() {
                   <div key={step} className="flex items-center">
                     <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
                       currentStep >= step 
-                        ? 'bg-blue-600 text-white' 
+                        ? 'bg-red-600 text-white' 
                         : 'bg-gray-300 text-gray-600'
                     }`}>
                       {step}
                     </div>
                     {step < 4 && (
                       <div className={`w-16 h-1 mx-2 ${
-                        currentStep > step ? 'bg-blue-600' : 'bg-gray-300'
+                        currentStep > step ? 'bg-red-600' : 'bg-gray-300'
                       }`} />
                     )}
                   </div>
@@ -444,7 +453,7 @@ export default function App() {
               {currentStep === 1 && (
                 <div className="space-y-6">
                   <div className="flex items-center mb-6">
-                    <Building className="w-6 h-6 text-blue-600 mr-3" />
+                    <Building className="w-6 h-6 text-red-600 mr-3" />
                     <h2 className="text-2xl font-bold text-gray-800">Team-Manager</h2>
                   </div>
 
@@ -457,7 +466,7 @@ export default function App() {
                         type="text"
                         value={formData.teamManagerName}
                         onChange={(e) => setFormData(prev => ({ ...prev, teamManagerName: e.target.value }))}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
                         placeholder="Name der Schule / Institution"
                         required
                       />
@@ -471,7 +480,7 @@ export default function App() {
                         type="text"
                         value={formData.country}
                         onChange={(e) => setFormData(prev => ({ ...prev, country: e.target.value }))}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
                         placeholder="Deutschland"
                         required
                       />
@@ -485,7 +494,7 @@ export default function App() {
                         type="text"
                         value={formData.adresse}
                         onChange={(e) => setFormData(prev => ({ ...prev, adresse: e.target.value }))}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
                         placeholder="Straße und Hausnummer"
                       />
                     </div>
@@ -499,7 +508,7 @@ export default function App() {
                           type="text"
                           value={formData.plz}
                           onChange={(e) => setFormData(prev => ({ ...prev, plz: e.target.value }))}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
                           placeholder="12345"
                         />
                       </div>
@@ -511,7 +520,7 @@ export default function App() {
                           type="text"
                           value={formData.stadt}
                           onChange={(e) => setFormData(prev => ({ ...prev, stadt: e.target.value }))}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
                           placeholder="Musterstadt"
                         />
                       </div>
@@ -525,7 +534,7 @@ export default function App() {
                         type="text"
                         value={formData.ansprechperson}
                         onChange={(e) => setFormData(prev => ({ ...prev, ansprechperson: e.target.value }))}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
                         placeholder="Name der Ansprechperson"
                         required
                       />
@@ -539,7 +548,7 @@ export default function App() {
                         type="email"
                         value={formData.email}
                         onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
                         placeholder="beispiel@email.de"
                         required
                       />
@@ -550,7 +559,7 @@ export default function App() {
                     <button
                       onClick={nextStep}
                       disabled={!canProceedToStep2()}
-                      className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
+                      className="px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
                     >
                       Weiter zu Teams
                     </button>
@@ -563,7 +572,7 @@ export default function App() {
                 <div className="space-y-6">
                   <div className="flex items-center justify-between mb-6">
                     <div className="flex items-center">
-                      <Users className="w-6 h-6 text-blue-600 mr-3" />
+                      <Users className="w-6 h-6 text-red-600 mr-3" />
                       <h2 className="text-2xl font-bold text-gray-800">Teams und Teilnehmer</h2>
                     </div>
                     <button
@@ -595,7 +604,7 @@ export default function App() {
                             type="text"
                             value={team.teamName}
                             onChange={(e) => updateTeam(teamIndex, 'teamName', e.target.value)}
-                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
                             placeholder="Team Name"
                             required
                           />
@@ -609,7 +618,7 @@ export default function App() {
                             type="text"
                             value={team.zusaetzlicheInfo}
                             onChange={(e) => updateTeam(teamIndex, 'zusaetzlicheInfo', e.target.value)}
-                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
                             placeholder="Optionale Zusatzinfos"
                           />
                         </div>
@@ -627,7 +636,7 @@ export default function App() {
                                 type="checkbox"
                                 checked={team.wettbewerbe.includes(wettbewerb)}
                                 onChange={() => toggleWettbewerb(teamIndex, wettbewerb)}
-                                className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                                className="rounded border-gray-300 text-red-600 focus:ring-red-500"
                               />
                               <span className="text-sm text-gray-700">{wettbewerb}</span>
                             </label>
@@ -643,7 +652,7 @@ export default function App() {
                           </label>
                           <button
                             onClick={() => addTeilnehmer(teamIndex)}
-                            className="px-3 py-1 bg-blue-600 text-white text-sm rounded hover:bg-blue-700 transition-colors"
+                            className="px-3 py-1 bg-red-600 text-white text-sm rounded hover:bg-red-700 transition-colors"
                           >
                             + Teilnehmer
                           </button>
@@ -655,7 +664,7 @@ export default function App() {
                               type="text"
                               value={teilnehmer.vorname}
                               onChange={(e) => updateTeilnehmer(teamIndex, teilnehmerIndex, 'vorname', e.target.value)}
-                              className="px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                              className="px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-red-500 focus:border-transparent"
                               placeholder="Vorname"
                               required
                             />
@@ -663,7 +672,7 @@ export default function App() {
                               type="text"
                               value={teilnehmer.nachname}
                               onChange={(e) => updateTeilnehmer(teamIndex, teilnehmerIndex, 'nachname', e.target.value)}
-                              className="px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                              className="px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-red-500 focus:border-transparent"
                               placeholder="Nachname"
                               required
                             />
@@ -671,13 +680,13 @@ export default function App() {
                               type="date"
                               value={teilnehmer.geburtsdatum}
                               onChange={(e) => updateTeilnehmer(teamIndex, teilnehmerIndex, 'geburtsdatum', e.target.value)}
-                              className="px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                              className="px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-red-500 focus:border-transparent"
                             />
                             <input
                               type="text"
                               value={teilnehmer.klassenstufe}
                               onChange={(e) => updateTeilnehmer(teamIndex, teilnehmerIndex, 'klassenstufe', e.target.value)}
-                              className="px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                              className="px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-red-500 focus:border-transparent"
                               placeholder="Klasse"
                             />
                             <button
@@ -702,7 +711,7 @@ export default function App() {
                     <button
                       onClick={nextStep}
                       disabled={!canProceedToStep3()}
-                      className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
+                      className="px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
                     >
                       Weiter zur Teilnahmegebühr
                     </button>
@@ -714,11 +723,12 @@ export default function App() {
               {currentStep === 3 && (
                 <div className="space-y-6">
                   <div className="flex items-center mb-6">
-                    <Calculator className="w-6 h-6 text-blue-600 mr-3" />
+                    <Calculator className="w-6 h-6 text-red-600 mr-3" />
                     <h2 className="text-2xl font-bold text-gray-800">Teilnahmegebühr</h2>
                   </div>
 
                   <div className="bg-blue-50 rounded-lg p-6">
+                  <div className="bg-red-50 rounded-lg p-6">
                     <h3 className="text-lg font-semibold text-gray-800 mb-4">Gebührenberechnung</h3>
                     
                     <div className="space-y-3">
@@ -733,7 +743,7 @@ export default function App() {
                       <hr className="border-gray-300" />
                       <div className="flex justify-between items-center text-xl">
                         <span className="font-bold text-gray-800">Gesamtgebühr:</span>
-                        <span className="font-bold text-blue-600">{getTotalGebuehr()}€</span>
+                        <span className="font-bold text-red-600">{getTotalGebuehr()}€</span>
                       </div>
                     </div>
                   </div>
@@ -747,7 +757,7 @@ export default function App() {
                     </button>
                     <button
                       onClick={nextStep}
-                      className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                      className="px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
                     >
                       Zur Zusammenfassung
                     </button>
@@ -759,7 +769,7 @@ export default function App() {
               {currentStep === 4 && (
                 <div className="space-y-6">
                   <div className="flex items-center mb-6">
-                    <Trophy className="w-6 h-6 text-blue-600 mr-3" />
+                    <Trophy className="w-6 h-6 text-red-600 mr-3" />
                     <h2 className="text-2xl font-bold text-gray-800">Zusammenfassung</h2>
                   </div>
 
@@ -806,9 +816,10 @@ export default function App() {
                   </div>
 
                   <div className="bg-blue-50 rounded-lg p-6">
+                  <div className="bg-red-50 rounded-lg p-6">
                     <div className="flex justify-between items-center text-xl">
                       <span className="font-bold text-gray-800">Gesamtgebühr:</span>
-                      <span className="font-bold text-blue-600">{getTotalGebuehr()}€</span>
+                      <span className="font-bold text-red-600">{getTotalGebuehr()}€</span>
                     </div>
                     <div className="text-sm text-gray-600 mt-2">
                       {getTotalTeilnehmer()} Teilnehmer × {TEILNAHMEGEBUEHR_PRO_PERSON}€
@@ -825,7 +836,7 @@ export default function App() {
                     <button
                       onClick={saveToDatabase}
                       disabled={isSubmitting}
-                      className="px-8 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors font-semibold"
+                      className="px-8 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors font-semibold"
                     >
                       {isSubmitting ? 'Speichere...' : 'Anmeldung abschicken'}
                     </button>
