@@ -37,7 +37,7 @@ export const translations: Record<'de' | 'en', Translation> = {
     continueToTeams: 'Weiter zu Teams',
     
     // Step 2: Teams
-    teamsTitle: 'Teams und Teammitglieder',
+    teamsTitle: 'Teams und Mitglieder',
     addTeam: '+ Team hinzufügen',
     removeTeam: 'Team entfernen',
     teamName: 'Team Name *',
@@ -137,7 +137,7 @@ export const translations: Record<'de' | 'en', Translation> = {
     continueToTeams: 'Continue to Teams',
     
     // Step 2: Teams
-    teamsTitle: 'Teams and Team Members',
+    teamsTitle: 'Teams and Members',
     addTeam: '+ Add Team',
     removeTeam: 'Remove Team',
     teamName: 'Team Name *',
