@@ -731,10 +731,11 @@ export default function App() {
                               required
                             />
                             <input
-                              type="date"
+                              type="text"
                               value={teilnehmer.geburtsdatum}
                               onChange={(e) => updateTeilnehmer(teamIndex, teilnehmerIndex, 'geburtsdatum', e.target.value)}
                               className="px-3 py-2 text-sm sm:text-base border border-gray-300 rounded focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                              placeholder="TT.MM.JJJJ"
                             />
                             <input
                               type="text"
