@@ -37,7 +37,7 @@ const WETTBEWERBE = [
   'Jousting Challene',
   'SumoBot Challenge',
   'a-maze-ing Challenge',
-  'Fire Fighter Challenge',
+  'Fire Fighting Challenge',
   'Entrepreneurial',
   'Line Following Challenge'
 ];
