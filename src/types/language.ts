@@ -77,6 +77,8 @@ export interface Translation {
   nextSteps: string;
   nextStepsText: string;
   paymentInfo: string;
+  paymentNotice: string;
+  paymentConfirmation: string;
   paymentPurpose: string;
   questions: string;
   questionsText: string;
