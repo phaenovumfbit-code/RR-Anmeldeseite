@@ -427,12 +427,6 @@ export default function App() {
                   </a>
                 </div>
 
-                <button
-                  onClick={resetForm}
-                  className="w-full sm:w-auto px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors font-semibold text-sm sm:text-base"
-                >
-                  {t.newRegistration}
-                </button>
               </div>
             </div>
           </div>
