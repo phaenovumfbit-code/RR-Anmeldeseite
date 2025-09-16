@@ -382,14 +382,6 @@ export default function App() {
                     </div>
                   </div>
                   
-                  <div className="mt-4 p-3 bg-blue-50 border border-blue-200 rounded">
-                    <p className="text-sm text-gray-700 leading-relaxed">
-                      {t.paymentConfirmation}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="bg-yellow-50 rounded-lg p-4 sm:p-6 mb-8">
                   <h4 className="text-sm sm:text-base font-semibold text-gray-800 mb-3">{t.paymentPurpose}</h4>
                   <div className="space-y-2">
                     {formData.teams.map((team, index) => (
@@ -401,6 +393,20 @@ export default function App() {
                   <div className="mt-4 text-sm text-gray-600">
                     <p><span className="font-medium">{t.totalFee}</span> {getTotalGebuehr()}€</p>
                     <p><span className="font-medium">{t.participants}:</span> {getTotalTeilnehmer()}</p>
+                  </div>
+                </div>
+
+                <div className="bg-red-50 border-2 border-red-200 rounded-lg p-4 sm:p-6 mb-8">
+                  <div className="flex items-center mb-3">
+                    <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center mr-3">
+                      <span className="text-white font-bold text-sm">!</span>
+                    </div>
+                    <h3 className="text-base sm:text-lg font-bold text-red-800">Wichtiger Hinweis / Important Notice</h3>
+                  </div>
+                  <div className="bg-white p-4 rounded border-l-4 border-red-500">
+                    <p className="text-sm sm:text-base text-gray-800 font-medium leading-relaxed">
+                      {t.paymentConfirmation}
+                    </p>
                   </div>
                 </div>
 
