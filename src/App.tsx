@@ -215,8 +215,7 @@ export default function App() {
             nachname: teilnehmer.nachname,
             geburtsdatum: teilnehmer.geburtsdatum && teilnehmer.geburtsdatum.trim() !== '' ? teilnehmer.geburtsdatum : null,
             klassenstufe: teilnehmer.klassenstufe,
-            rolle: teilnehmer.rolle,
-            tshirt_groesse: teilnehmer.tshirtGroesse
+            rolle: teilnehmer.rolle
           }));
 
           const { error: teilnehmerError } = await supabase
