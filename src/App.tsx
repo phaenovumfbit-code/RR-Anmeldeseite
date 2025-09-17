@@ -728,7 +728,7 @@ export default function App() {
                         </div>
                         
                         {team.teilnehmer.map((teilnehmer, teilnehmerIndex) => (
-                          <div key={teilnehmerIndex} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3 mb-3 p-3 bg-gray-50 rounded">
+                          <div key={teilnehmerIndex} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 mb-3 p-3 bg-gray-50 rounded">
                             <input
                               type="text"
                               value={teilnehmer.vorname}
@@ -759,24 +759,11 @@ export default function App() {
                               className="px-3 py-2 text-sm sm:text-base border border-gray-300 rounded focus:ring-2 focus:ring-red-500 focus:border-transparent"
                               placeholder={t.gradePlaceholder}
                             />
-                            <select
-                              value={teilnehmer.tshirtGroesse}
-                              onChange={(e) => updateTeilnehmer(teamIndex, teilnehmerIndex, 'tshirtGroesse', e.target.value)}
-                              className="px-3 py-2 text-sm sm:text-base border border-gray-300 rounded focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                            >
-                              <option value="">T-Shirt Größe</option>
-                              <option value="XS">XS</option>
-                              <option value="S">S</option>
-                              <option value="M">M</option>
-                              <option value="L">L</option>
-                              <option value="XL">XL</option>
-                              <option value="XXL">XXL</option>
-                            </select>
                             <input
                               type="text"
                               value={teilnehmer.tshirtGroesse}
                               onChange={(e) => updateTeilnehmer(teamIndex, teilnehmerIndex, 'tshirtGroesse', e.target.value)}
-                              className="px-3 py-2 text-sm sm:text-base border border-gray-300 rounded focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                              className="px-3 py-2 text-sm sm:text-base border border-gray-300 rounded focus:ring-2 focus:ring-red-500 focus:border-transparent placeholder-gray-400"
                               placeholder="T-Shirt Größe"
                             />
                             <div className="sm:col-span-2 lg:col-span-1">
