@@ -727,9 +727,18 @@ export default function App() {
                           </button>
                         </div>
                         
-                        <div className="mb-3 p-3 bg-blue-50 rounded-lg border border-blue-200">
-                          <p className="text-sm text-blue-800">
-                            <span className="font-medium">{t.tshirtSizeNote}</span>
+                        <div className="mb-3 p-3 bg-blue-50 rounded-lg border border-blue-200 flex items-center">
+                          <div className="relative group mr-3">
+                            <div className="w-5 h-5 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs font-bold cursor-help">
+                              ?
+                            </div>
+                            <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-gray-800 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-10">
+                              {t.tshirtSizeNote}
+                              <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-gray-800"></div>
+                            </div>
+                          </div>
+                          <p className="text-sm text-blue-800 font-medium">
+                            T-Shirt Information
                           </p>
                         </div>
 
@@ -770,7 +779,7 @@ export default function App() {
                               onChange={(e) => updateTeilnehmer(teamIndex, teilnehmerIndex, 'tshirtGroesse', e.target.value)}
                               className="px-3 py-2 text-sm sm:text-base border border-gray-300 rounded focus:ring-2 focus:ring-red-500 focus:border-transparent"
                             >
-                              <option value="">{t.tshirtSizePlaceholder}</option>
+                              <option value="">T-Shirt Größe</option>
                               <option value="XS">XS</option>
                               <option value="S">S</option>
                               <option value="M">M</option>
