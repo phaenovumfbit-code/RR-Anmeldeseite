@@ -54,6 +54,8 @@ export const translations: Record<'de' | 'en', Translation> = {
     gradePlaceholder: 'Klasse',
     tshirtSize: 'T-Shirt Größe',
     tshirtSizePlaceholder: 'T-Shirt Größe',
+    tshirtSizeNote: 'Hinweis: Bitte geben Sie die T-Shirt Größe an, wenn Sie ein RoboRave Germany Turnier T-Shirt tragen möchten.',
+    remove: 'Entfernen',
     continueToFee: 'Weiter zur Teilnahmegebühr',
     
     // Step 3: Fee
