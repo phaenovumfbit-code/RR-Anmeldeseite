@@ -51,6 +51,8 @@ export interface Translation {
   birthDate: string;
   grade: string;
   gradePlaceholder: string;
+  tshirtSize: string;
+  tshirtSizePlaceholder: string;
   remove: string;
   back: string;
   continueToFee: string;

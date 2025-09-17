@@ -154,6 +154,8 @@ export const translations: Record<'de' | 'en', Translation> = {
     gradePlaceholder: 'Grade',
     tshirtSize: 'T-Shirt Size',
     tshirtSizePlaceholder: 'T-Shirt Size',
+    tshirtSize: 'T-Shirt Size',
+    tshirtSizePlaceholder: 'T-Shirt Size',
     tshirtSizeNote: 'Note: Please fill in T-shirt size if you would like to wear a RoboRave Germany tournament T-shirt.',
     remove: 'Remove',
     back: 'Back',
