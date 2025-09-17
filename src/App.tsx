@@ -772,6 +772,13 @@ export default function App() {
                               <option value="XL">XL</option>
                               <option value="XXL">XXL</option>
                             </select>
+                            <input
+                              type="text"
+                              value={teilnehmer.tshirtGroesse}
+                              onChange={(e) => updateTeilnehmer(teamIndex, teilnehmerIndex, 'tshirtGroesse', e.target.value)}
+                              className="px-3 py-2 text-sm sm:text-base border border-gray-300 rounded focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                              placeholder="T-Shirt Größe"
+                            />
                             <div className="sm:col-span-2 lg:col-span-1">
                               <button
                                 onClick={() => removeTeilnehmer(teamIndex, teilnehmerIndex)}
