@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { supabase } from '../supabase/supabaseClient';
-import { Users, MapPin, Mail, Building, Trophy, Calculator, CreditCard, CheckCircle } from 'lucide-react';
+import { Users, MapPin, Mail, Building, Trophy, Calculator, CreditCard, CheckCircle, ArrowLeft } from 'lucide-react';
 import { LanguageModal } from './components/LanguageModal';
 import { Impressum } from './components/Impressum';
 import { Datenschutz } from './components/Datenschutz';
