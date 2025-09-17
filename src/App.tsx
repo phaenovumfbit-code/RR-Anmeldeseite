@@ -563,46 +563,6 @@ export default function App() {
                       />
                     </div>
 
-                    <div className="sm:col-span-2">
-                      <label className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
-                        {t.address}
-                      </label>
-                      <input
-                        type="text"
-                        value={formData.adresse}
-                        onChange={(e) => setFormData(prev => ({ ...prev, adresse: e.target.value }))}
-                        className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                        placeholder={t.addressPlaceholder}
-                      />
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-4">
-                      <div>
-                        <label className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
-                          {t.postalCode}
-                        </label>
-                        <input
-                          type="text"
-                          value={formData.plz}
-                          onChange={(e) => setFormData(prev => ({ ...prev, plz: e.target.value }))}
-                          className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                          placeholder={t.postalCodePlaceholder}
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
-                          {t.city}
-                        </label>
-                        <input
-                          type="text"
-                          value={formData.stadt}
-                          onChange={(e) => setFormData(prev => ({ ...prev, stadt: e.target.value }))}
-                          className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                          placeholder={t.cityPlaceholder}
-                        />
-                      </div>
-                    </div>
-
                     <div>
                       <label className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
                         {t.contactPerson}
@@ -872,10 +832,6 @@ export default function App() {
                       <div><span className="font-medium">{t.country.replace(' *', '')}:</span> {formData.country}</div>
                       <div><span className="font-medium">{t.contactPerson.replace(' *', '')}:</span> {formData.ansprechperson}</div>
                       <div><span className="font-medium">{t.email.replace(' *', '')}:</span> {formData.email}</div>
-                      {formData.adresse && <div><span className="font-medium">{t.address}:</span> {formData.adresse}</div>}
-                      {(formData.plz || formData.stadt) && (
-                        <div><span className="font-medium">{t.city}:</span> {formData.plz} {formData.stadt}</div>
-                      )}
                     </div>
                   </div>
 
