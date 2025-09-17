@@ -52,8 +52,8 @@ export const translations: Record<'de' | 'en', Translation> = {
     birthDate: 'Geburtsdatum',
     grade: 'Klasse',
     gradePlaceholder: 'Klasse',
-    remove: 'Entfernen',
-    back: 'Zurück',
+    tshirtSize: 'T-Shirt Größe',
+    tshirtSizePlaceholder: 'T-Shirt Größe',
     continueToFee: 'Weiter zur Teilnahmegebühr',
     
     // Step 3: Fee
