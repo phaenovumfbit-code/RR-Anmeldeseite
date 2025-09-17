@@ -764,7 +764,7 @@ export default function App() {
                               onChange={(e) => updateTeilnehmer(teamIndex, teilnehmerIndex, 'tshirtGroesse', e.target.value)}
                               className="px-3 py-2 text-sm sm:text-base border border-gray-300 rounded focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-700"
                             >
-                              <option value="" className="text-gray-400">T-Shirt Größe</option>
+                              <option value="" disabled className="text-gray-500">T-Shirt Größe</option>
                               <option value="XS">XS</option>
                               <option value="S">S</option>
                               <option value="M">M</option>
