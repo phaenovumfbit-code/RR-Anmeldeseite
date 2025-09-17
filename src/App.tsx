@@ -593,7 +593,6 @@ export default function App() {
                         />
                       </div>
                     </div>
-                  </div>
 
                     <div>
                       <label className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
