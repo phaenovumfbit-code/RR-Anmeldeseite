@@ -727,21 +727,6 @@ export default function App() {
                           </button>
                         </div>
                         
-                        <div className="mb-3 p-3 bg-blue-50 rounded-lg border border-blue-200 flex items-center">
-                          <div className="relative group mr-3">
-                            <div className="w-5 h-5 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs font-bold cursor-help">
-                              ?
-                            </div>
-                            <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-gray-800 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-10">
-                              {t.tshirtSizeNote}
-                              <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-gray-800"></div>
-                            </div>
-                          </div>
-                          <p className="text-sm text-blue-800 font-medium">
-                            T-Shirt Information
-                          </p>
-                        </div>
-
                         {team.teilnehmer.map((teilnehmer, teilnehmerIndex) => (
                           <div key={teilnehmerIndex} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3 mb-3 p-3 bg-gray-50 rounded">
                             <input
