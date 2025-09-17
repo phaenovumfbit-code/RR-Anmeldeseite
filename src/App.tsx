@@ -13,6 +13,7 @@ interface Teilnehmer {
   geburtsdatum: string;
   klassenstufe: string;
   rolle: string;
+  tshirtGroesse: string;
 }
 
 interface Team {
@@ -106,7 +107,8 @@ export default function App() {
       nachname: '',
       geburtsdatum: '',
       klassenstufe: '',
-      rolle: 'Teilnehmer'
+      rolle: 'Teilnehmer',
+      tshirtGroesse: ''
     };
 
     setFormData(prev => ({
@@ -213,7 +215,8 @@ export default function App() {
             nachname: teilnehmer.nachname,
             geburtsdatum: teilnehmer.geburtsdatum && teilnehmer.geburtsdatum.trim() !== '' ? teilnehmer.geburtsdatum : null,
             klassenstufe: teilnehmer.klassenstufe,
-            rolle: teilnehmer.rolle
+            rolle: teilnehmer.rolle,
+            tshirt_groesse: teilnehmer.tshirtGroesse
           }));
 
           const { error: teilnehmerError } = await supabase
@@ -723,9 +726,15 @@ export default function App() {
                             {t.addParticipant}
                           </button>
                         </div>
+                        
+                        <div className="mb-3 p-3 bg-blue-50 rounded-lg border border-blue-200">
+                          <p className="text-sm text-blue-800">
+                            <span className="font-medium">{t.tshirtSizeNote}</span>
+                          </p>
+                        </div>
 
                         {team.teilnehmer.map((teilnehmer, teilnehmerIndex) => (
-                          <div key={teilnehmerIndex} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 mb-3 p-3 bg-gray-50 rounded">
+                          <div key={teilnehmerIndex} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3 mb-3 p-3 bg-gray-50 rounded">
                             <input
                               type="text"
                               value={teilnehmer.vorname}
@@ -756,6 +765,19 @@ export default function App() {
                               className="px-3 py-2 text-sm sm:text-base border border-gray-300 rounded focus:ring-2 focus:ring-red-500 focus:border-transparent"
                               placeholder={t.gradePlaceholder}
                             />
+                            <select
+                              value={teilnehmer.tshirtGroesse}
+                              onChange={(e) => updateTeilnehmer(teamIndex, teilnehmerIndex, 'tshirtGroesse', e.target.value)}
+                              className="px-3 py-2 text-sm sm:text-base border border-gray-300 rounded focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                            >
+                              <option value="">{t.tshirtSizePlaceholder}</option>
+                              <option value="XS">XS</option>
+                              <option value="S">S</option>
+                              <option value="M">M</option>
+                              <option value="L">L</option>
+                              <option value="XL">XL</option>
+                              <option value="XXL">XXL</option>
+                            </select>
                             <div className="sm:col-span-2 lg:col-span-1">
                               <button
                                 onClick={() => removeTeilnehmer(teamIndex, teilnehmerIndex)}
