@@ -399,14 +399,14 @@ export default function App() {
                   </div>
                 </div>
 
-                <div className="bg-red-50 border-2 border-red-200 rounded-lg p-4 sm:p-6 mb-8">
+                <div className="bg-yellow-50 border-2 border-yellow-200 rounded-lg p-4 sm:p-6 mb-8">
                   <div className="flex items-center mb-3">
-                    <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center mr-3">
+                    <div className="w-6 h-6 bg-yellow-600 rounded-full flex items-center justify-center mr-3">
                       <span className="text-white font-bold text-sm">!</span>
                     </div>
-                    <h3 className="text-base sm:text-lg font-bold text-red-800">Wichtiger Hinweis / Important Notice</h3>
+                    <h3 className="text-base sm:text-lg font-bold text-yellow-800">Wichtiger Hinweis / Important Notice</h3>
                   </div>
-                  <div className="bg-white p-4 rounded border-l-4 border-red-500">
+                  <div className="bg-white p-4 rounded border-l-4 border-yellow-500">
                     <p className="text-sm sm:text-base text-gray-800 font-medium leading-relaxed">
                       {t.paymentConfirmation}
                     </p>
@@ -430,6 +430,15 @@ export default function App() {
                   </a>
                 </div>
 
+                <div className="flex flex-col sm:flex-row justify-between items-center pt-6 gap-4">
+                  <button
+                    onClick={resetForm}
+                    className="w-full sm:w-auto flex items-center justify-center px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors font-semibold text-sm sm:text-base"
+                  >
+                    <ArrowLeft className="w-4 h-4 mr-2" />
+                    {t.newRegistration}
+                  </button>
+                </div>
               </div>
             </div>
           </div>
