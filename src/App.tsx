@@ -434,35 +434,34 @@ export default function App() {
             </div>
           </div>
 
-          {/* Footer */}
-          <div className="mt-8 bg-white rounded-lg shadow-sm border border-gray-200 px-4 sm:px-8 py-4 text-center">
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4">
-              <p className="text-sm sm:text-base text-black font-medium">
-                © 2025 phaenovum - Schülerforschungszentrum Lörrach-Dreiländereck
-              </p>
-              <span className="hidden sm:inline text-gray-400">|</span>
-              <button
-                onClick={() => setShowImpressum(true)}
-                className="text-sm sm:text-base text-red-600 hover:text-red-800 underline transition-colors"
+        {/* Footer */}
+        <div className="mt-8 bg-white rounded-lg shadow-sm border border-gray-200 px-4 sm:px-8 py-4 text-center">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4">
+            <p className="text-sm sm:text-base text-black font-medium">
+              © 2025 phaenovum - Schülerforschungszentrum Lörrach-Dreiländereck
+            </p>
+            <span className="hidden sm:inline text-gray-400">|</span>
+            <button
+              onClick={() => setShowImpressum(true)}
+              className="text-sm sm:text-base text-red-600 hover:text-red-800 underline transition-colors"
+            >
+              Impressum
+            </button>
+            <span className="hidden sm:inline text-gray-400">|</span>
+            <button
+              onClick={() => setShowDatenschutz(true)}
+              className="text-sm sm:text-base text-red-600 hover:text-red-800 underline transition-colors"
+            >
+              Datenschutz
+            </button>
+            <span className="hidden sm:inline text-gray-400">|</span>
+            <div className="text-sm sm:text-base text-black">
+              Kontakt: <a
+                href="mailto:wettbewerb@roborave.de"
+                className="text-red-600 hover:text-red-800 underline transition-colors"
               >
-                Impressum
-              </button>
-              <span className="hidden sm:inline text-gray-400">|</span>
-              <button
-                onClick={() => setShowDatenschutz(true)}
-                className="text-sm sm:text-base text-red-600 hover:text-red-800 underline transition-colors"
-              >
-                Datenschutz
-              </button>
-              <span className="hidden sm:inline text-gray-400">|</span>
-              <div className="text-sm sm:text-base text-black">
-                Kontakt: <a
-                  href="mailto:wettbewerb@roborave.de"
-                  className="text-red-600 hover:text-red-800 underline transition-colors"
-                >
-                  wettbewerb@roborave.de
-                </a>
-              </div>
+                wettbewerb@roborave.de
+              </a>
             </div>
           </div>
         </div>
