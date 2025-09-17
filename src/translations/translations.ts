@@ -82,7 +82,7 @@ export const translations: Record<'de' | 'en', Translation> = {
     nextStepsText: '• Überweisen Sie die Teilnahmegebühr mit dem angegebenen Verwendungszweck\n• Weitere Informationen folgen vor dem Wettbewerb',
     paymentInfo: 'Zahlungsinformationen',
     paymentNotice: 'Bitte überweisen Sie die vollständige Anmeldegebühr für Ihre Teams auf unser Vereinskonto:',
-    paymentConfirmation: 'Erst nach Überweisung der vollständigen Teilnahmegebühr erhält der Team-Manager eine verbindliche Bestätigung der Wettbewerbsanmeldung per E-Mail seitens des phaenovum Schülerforschungszentrums.',
+    paymentConfirmation: 'Erst nach Überweisung der vollständigen Teilnahmegebühr erhält der Team-Manager vom phaenovum Schülerforschungszentrum eine verbindliche Bestätigung der Wettbewerbsanmeldung per E-Mail',
     paymentPurpose: 'Verwendungszweck für Ihre Teams:',
     questions: 'Haben Sie Fragen?',
     questionsText: 'Bei weiteren Fragen wenden Sie sich gerne an uns:',
