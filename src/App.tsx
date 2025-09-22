@@ -224,38 +224,40 @@ export default function App() {
 
         // Wettbewerbe verknüpfen
         if (team.wettbewerbe.length > 0) {
-          console.log('Verknüpfe Wettbewerbe:', team.wettbewerbe);
-          
           const { data: wettbewerbeData, error: wettbewerbeError } = await supabase
             .from('wettbewerbe')
             .select('id, name')
             .in('name', team.wettbewerbe);
 
           if (wettbewerbeError) throw wettbewerbeError;
-          
-          console.log('Gefundene Wettbewerbe in DB:', wettbewerbeData);
 
-          const teamWettbewerbeData = wettbewerbeData.map(wettbewerb => ({
-            team_id: teamData.id,
-            wettbewerb_id: wettbewerb.id
-          }));
+          if (wettbewerbeData && wettbewerbeData.length > 0) {
+            const teamWettbewerbeData = wettbewerbeData.map(wettbewerb => ({
+              team_id: teamData.id,
+              wettbewerb_id: wettbewerb.id
+            }));
 
-          console.log('Team-Wettbewerbe Daten:', teamWettbewerbeData);
+            const { error: teamWettbewerbeError } = await supabase
+              .from('team_wettbewerbe')
+              .insert(teamWettbewerbeData);
 
-          const { error: teamWettbewerbeError } = await supabase
-            .from('team_wettbewerbe')
-            .insert(teamWettbewerbeData);
-
-          if (teamWettbewerbeError) throw teamWettbewerbeError;
+            if (teamWettbewerbeError) {
+              console.error('Fehler beim Speichern der Team-Wettbewerbe:', teamWettbewerbeError);
+              throw teamWettbewerbeError;
+            }
+          } else {
+            console.warn('Keine passenden Wettbewerbe in der Datenbank gefunden für:', team.wettbewerbe);
+          }
         }
       }
 
       // Zur Bestätigungsseite wechseln
       setIsSubmitted(true);
+      setCurrentStep(1); // Reset step for potential new registration
 
     } catch (error) {
       console.error('Fehler beim Speichern der Anmeldung:', error);
-      alert(`Fehler beim Speichern der Anmeldung:\n\n${error.message}`);
+      alert(`Fehler beim Speichern der Anmeldung:\n\n${error?.message || 'Unbekannter Fehler'}`);
     } finally {
       setIsSubmitting(false);
     }
