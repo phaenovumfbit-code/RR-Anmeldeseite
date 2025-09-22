@@ -197,7 +197,8 @@ export default function App() {
           .insert({
             anmeldung_id: anmeldungData.id,
             team_name: team.teamName,
-            zusaetzliche_info: team.zusaetzlicheInfo
+            zusaetzliche_info: team.zusaetzlicheInfo,
+            wettbewerbe: team.wettbewerbe
           })
           .select()
           .single();
@@ -220,34 +221,6 @@ export default function App() {
             .insert(teilnehmerData);
 
           if (teilnehmerError) throw teilnehmerError;
-        }
-
-        // Wettbewerbe verknüpfen
-        if (team.wettbewerbe.length > 0) {
-          const { data: wettbewerbeData, error: wettbewerbeError } = await supabase
-            .from('wettbewerbe')
-            .select('id, name')
-            .in('name', team.wettbewerbe);
-
-          if (wettbewerbeError) throw wettbewerbeError;
-
-          if (wettbewerbeData && wettbewerbeData.length > 0) {
-            const teamWettbewerbeData = wettbewerbeData.map(wettbewerb => ({
-              team_id: teamData.id,
-              wettbewerb_id: wettbewerb.id
-            }));
-
-            const { error: teamWettbewerbeError } = await supabase
-              .from('team_wettbewerbe')
-              .insert(teamWettbewerbeData);
-
-            if (teamWettbewerbeError) {
-              console.error('Fehler beim Speichern der Team-Wettbewerbe:', teamWettbewerbeError);
-              throw teamWettbewerbeError;
-            }
-          } else {
-            console.warn('Keine passenden Wettbewerbe in der Datenbank gefunden für:', team.wettbewerbe);
-          }
         }
       }
 
