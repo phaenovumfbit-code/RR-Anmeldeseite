@@ -181,9 +181,6 @@ export default function App() {
         .from('anmeldungen')
         .insert({
           team_manager_name: formData.teamManagerName,
-          adresse: formData.adresse,
-          stadt: formData.stadt,
-          plz: formData.plz,
           country: formData.country,
           ansprechperson: formData.ansprechperson,
           email: formData.email
