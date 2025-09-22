@@ -35,10 +35,10 @@ interface FormData {
 }
 
 const WETTBEWERBE = [
-  'Jousting Challene',
+  'Jousting Challenge',
   'SumoBot Challenge',
   'a-maze-ing Challenge',
-  'Fire Fighting Challenge',
+  'Fire Fighter Challenge',
   'Entrepreneurial',
   'Line Following Challenge'
 ];
