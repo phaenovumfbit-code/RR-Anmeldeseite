@@ -601,7 +601,7 @@ export default function App() {
                       <div className="flex-shrink-0">
                         <button
                           onClick={addTeam}
-                          className="w-full sm:w-auto px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors text-sm sm:text-base whitespace-nowrap"
+                          className="w-full sm:w-auto px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors text-sm sm:text-base whitespace-nowrap"
                         >
                           {t.addTeam}
                         </button>
