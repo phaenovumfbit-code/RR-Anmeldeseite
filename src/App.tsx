@@ -217,7 +217,7 @@ export default function App() {
             team_id: teamData.id,
             vorname: teilnehmer.vorname,
             nachname: teilnehmer.nachname,
-            geburtsdatum: teilnehmer.geburtsdatum && teilnehmer.geburtsdatum.trim() !== '' && isValidDate(teilnehmer.geburtsdatum) ? teilnehmer.geburtsdatum : null,
+            geburtsdatum: teilnehmer.geburtsdatum && teilnehmer.geburtsdatum.trim() !== '' ? teilnehmer.geburtsdatum : null,
             klassenstufe: teilnehmer.klassenstufe,
             rolle: teilnehmer.rolle,
             tshirt_groesse: teilnehmer.tshirtGroesse || '',
@@ -714,13 +714,7 @@ export default function App() {
                               value={teilnehmer.geburtsdatum}
                               onChange={(e) => updateTeilnehmer(teamIndex, teilnehmerIndex, 'geburtsdatum', e.target.value)}
                               className="px-3 py-2 text-sm sm:text-base border border-gray-300 rounded focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                              placeholder={t.birthDate}
-                            />
-                            <input
-                              type="date"
-                              value={teilnehmer.geburtsdatum}
-                              onChange={(e) => updateTeilnehmer(teamIndex, teilnehmerIndex, 'geburtsdatum', e.target.value)}
-                              className="px-3 py-2 text-sm sm:text-base border border-gray-300 rounded focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                              placeholder="TT.MM.JJJJ"
                             />
                             <input
                               type="text"
