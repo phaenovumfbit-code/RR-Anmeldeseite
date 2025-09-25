@@ -586,17 +586,27 @@ export default function App() {
               {/* Step 2: Teams */}
               {currentStep === 2 && (
                 <div className="space-y-6">
-                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-4">
+                  <div className="mb-6">
                     <div className="flex items-center">
                       <Users className="w-5 h-5 sm:w-6 sm:h-6 text-red-600 mr-3" />
                       <h2 className="text-xl sm:text-2xl font-bold text-gray-800">{t.teamsTitle}</h2>
                     </div>
-                    <button
-                      onClick={addTeam}
-                      className="w-full sm:w-auto px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors text-sm sm:text-base"
-                    >
-                      {t.addTeam}
-                    </button>
+                    
+                    <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between mt-4 gap-4">
+                      <div className="flex-1">
+                        <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                          {t.teamExplanation}
+                        </p>
+                      </div>
+                      <div className="flex-shrink-0">
+                        <button
+                          onClick={addTeam}
+                          className="w-full sm:w-auto px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors text-sm sm:text-base whitespace-nowrap"
+                        >
+                          {t.addTeam}
+                        </button>
+                      </div>
+                    </div>
                   </div>
 
                   {formData.teams.map((team, teamIndex) => (

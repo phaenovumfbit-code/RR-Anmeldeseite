@@ -39,6 +39,7 @@ export const translations: Record<'de' | 'en', Translation> = {
     // Step 2: Teams
     teamsTitle: 'Teams und Mitglieder',
     addTeam: '+ Team hinzufügen',
+    teamExplanation: 'Mit dem Button "Team hinzufügen" können Sie weitere Teams ihrer Anmeldung hinzufügen. Bitte legen Sie in diesem Schritt alle Teams an, welche am Wettbewerb teilnehmen sollen.',
     removeTeam: 'Team entfernen',
     teamName: 'Team Name *',
     teamNamePlaceholder: 'Team Name',
@@ -142,6 +143,7 @@ export const translations: Record<'de' | 'en', Translation> = {
     // Step 2: Teams
     teamsTitle: 'Teams and Members',
     addTeam: '+ Add Team',
+    teamExplanation: 'Use the "Add Team" button to add additional teams to your registration. Please create all teams that should participate in the competition in this step.',
     removeTeam: 'Remove Team',
     teamName: 'Team Name *',
     teamNamePlaceholder: 'Team Name',
