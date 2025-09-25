@@ -182,6 +182,9 @@ export default function App() {
     try {
       setIsSubmitting(true);
 
+      console.log('Starting database save...');
+      console.log('Form data:', formData);
+
       // Anmeldung speichern
       const { data: anmeldungData, error: anmeldungError } = await supabase
         .from('anmeldungen')
@@ -194,10 +197,12 @@ export default function App() {
         .select()
         .single();
 
+      console.log('Anmeldung result:', { anmeldungData, anmeldungError });
       if (anmeldungError) throw anmeldungError;
 
       // Teams und Teilnehmer speichern
       for (const team of formData.teams) {
+        console.log('Saving team:', team.teamName);
         const { data: teamData, error: teamError } = await supabase
           .from('teams')
           .insert({
@@ -209,6 +214,7 @@ export default function App() {
           .select()
           .single();
 
+        console.log('Team result:', { teamData, teamError });
         if (teamError) throw teamError;
 
         // Teilnehmer speichern
@@ -217,28 +223,44 @@ export default function App() {
             team_id: teamData.id,
             vorname: teilnehmer.vorname,
             nachname: teilnehmer.nachname,
-            geburtsdatum: teilnehmer.geburtsdatum && teilnehmer.geburtsdatum.trim() !== '' ? teilnehmer.geburtsdatum : null,
+            geburtsdatum: teilnehmer.geburtsdatum && teilnehmer.geburtsdatum.trim() !== '' ? teilnehmer.geburtsdatum.trim() : '',
             klassenstufe: teilnehmer.klassenstufe,
             rolle: teilnehmer.rolle,
             tshirt_groesse: teilnehmer.tshirtGroesse || '',
             teamname: team.teamName
           }));
 
+          console.log('Saving teilnehmer:', teilnehmerData);
           const { error: teilnehmerError } = await supabase
             .from('teilnehmer')
             .insert(teilnehmerData);
 
+          console.log('Teilnehmer error:', teilnehmerError);
           if (teilnehmerError) throw teilnehmerError;
         }
       }
 
+      console.log('Database save completed successfully');
       // Zur Bestätigungsseite wechseln
       setIsSubmitted(true);
       setCurrentStep(1); // Reset step for potential new registration
 
     } catch (error) {
       console.error('Fehler beim Speichern der Anmeldung:', error);
-      alert(`Fehler beim Speichern der Anmeldung:\n\n${error?.message || 'Unbekannter Fehler'}`);
+      
+      // Detaillierte Fehlermeldung
+      let errorMessage = 'Unbekannter Fehler';
+      if (error?.message) {
+        errorMessage = error.message;
+      }
+      if (error?.details) {
+        errorMessage += `\n\nDetails: ${error.details}`;
+      }
+      if (error?.hint) {
+        errorMessage += `\n\nHinweis: ${error.hint}`;
+      }
+      
+      alert(`Fehler beim Speichern der Anmeldung:\n\n${errorMessage}`);
     } finally {
       setIsSubmitting(false);
     }
