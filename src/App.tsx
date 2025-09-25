@@ -214,7 +214,8 @@ export default function App() {
             geburtsdatum: teilnehmer.geburtsdatum && teilnehmer.geburtsdatum.trim() !== '' ? teilnehmer.geburtsdatum : null,
             klassenstufe: teilnehmer.klassenstufe,
             rolle: teilnehmer.rolle,
-            tshirt_groesse: teilnehmer.tshirtGroesse || ''
+            tshirt_groesse: teilnehmer.tshirtGroesse || '',
+            teamname: team.teamName
           }));
 
           const { error: teilnehmerError } = await supabase
