@@ -223,7 +223,7 @@ export default function App() {
             team_id: teamData.id,
             vorname: teilnehmer.vorname,
             nachname: teilnehmer.nachname,
-            geburtsdatum: teilnehmer.geburtsdatum && teilnehmer.geburtsdatum.trim() !== '' ? teilnehmer.geburtsdatum.trim() : '',
+            geburtsdatum: teilnehmer.geburtsdatum && teilnehmer.geburtsdatum.trim() !== '' ? teilnehmer.geburtsdatum.trim() : null,
             klassenstufe: teilnehmer.klassenstufe,
             rolle: teilnehmer.rolle,
             tshirt_groesse: teilnehmer.tshirtGroesse || '',
